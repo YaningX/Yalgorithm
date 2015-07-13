@@ -7,7 +7,15 @@ public class RecBTree<K extends Comparable<K>, V> extends AbstractBTree<K, V> {
 
     @Override
     public void add(BTNode<K, V> btNode) {
+        doAdd(root, btNode);
+    }
 
+    private BTNode<K, V> doAdd(BTNode<K, V> root, BTNode<K, V> btNode) {
+        if (root == null) {
+
+        }
+
+        if (root.getKey() > btNode.getKey())
     }
 
     @Override
