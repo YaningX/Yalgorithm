@@ -16,7 +16,7 @@ public interface BTree<K extends Comparable<K>, V> {
      * @param key , key of the node
      * @return, value of the node
      */
-    V get(K key);
+    V get(K key) throws Exception;
 
     /**
      * Traverse the binary tree in preorder.
