@@ -9,12 +9,12 @@
 ```
 Yalgorithm/
 ├── data-structure/
-│   ├── btree/
-│   │   ├── BTNode
-│   │   ├── BTree
-│   │   ├── AbstractBTree
-│   │   ├── IterBTree
-│   │   └── RecBTree
+│   └── btree/
+│       ├── BTNode
+│       ├── BTree
+│       ├── AbstractBTree
+│       ├── IterBTree
+│       └── RecBTree
 └── geeks4geeks/
     └── findMaxProduct
 ```
