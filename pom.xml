@@ -19,6 +19,7 @@
   <modules>
     <module>data-structure</module>
     <module>geeks4geeks</module>
+    <module>dynamic-programming</module>
   </modules>
 
   <dependencies>
