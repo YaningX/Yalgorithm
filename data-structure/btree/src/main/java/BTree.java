@@ -38,7 +38,7 @@ public interface BTree<K extends Comparable<K>, V> {
     List<BTNode<K, V>> inorder();
 
     /**
-     * Traverse btNode's subtree in inorder.
+     * Traverse btNode's subtree in inorder, thus the output btNodes are in increasing order.
      * @param btNode ,
      * @return, 091
      */
@@ -56,4 +56,16 @@ public interface BTree<K extends Comparable<K>, V> {
      * @return, print all nodes in postorder.
      */
     List<BTNode<K, V>> postorder(BTNode<K, V> btNode);
+
+    /**
+     * To get kth big node in this BTree.
+     * @return, return the kth big node.
+     */
+    BTNode<K, V> getKthbigNode(int k);
+
+    /**
+     * To get kth small node in this BTree.
+     * @return, return the kth small node.
+     */
+    BTNode<K, V> getKthsmallNode(int k);
 }

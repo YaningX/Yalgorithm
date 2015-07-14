@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -46,31 +47,99 @@ public class RecBTree<K extends Comparable<K>, V> extends AbstractBTree<K, V> {
 
     @Override
     public List<BTNode<K, V>> preorder() {
-        return null;
+        return preorder(root);
     }
 
     @Override
     public List<BTNode<K, V>> preorder(BTNode<K, V> btNode) {
-        return null;
+        if (btNode == null) {
+            return new LinkedList<BTNode<K, V>>();
+        }
+        List<BTNode<K, V>> preList = new LinkedList<BTNode<K, V>>();
+        preList.add(btNode);
+        preList.addAll(preorder(btNode.getLeftChild()));
+        preList.addAll(preorder(btNode.getRightChild()));
+        return preList;
     }
 
     @Override
     public List<BTNode<K, V>> inorder() {
-        return null;
+        return inorder(root);
     }
 
     @Override
     public List<BTNode<K, V>> inorder(BTNode<K, V> btNode) {
-        return null;
+        if (btNode == null) {
+            return new LinkedList<BTNode<K, V>>();
+        }
+        List<BTNode<K, V>> inList = inorder(btNode.getLeftChild());
+        inList.add(btNode);
+        inList.addAll(inorder(btNode.getRightChild()));
+        return inList;
     }
 
     @Override
     public List<BTNode<K, V>> postorder() {
-        return null;
+        return postorder(root);
     }
 
     @Override
     public List<BTNode<K, V>> postorder(BTNode<K, V> btNode) {
-        return null;
+        if (btNode == null) {
+            return new LinkedList<BTNode<K, V>>();
+        }
+        List<BTNode<K, V>> postList = postorder(btNode.getLeftChild());
+        postList.addAll(postorder(btNode.getRightChild()));
+        postList.add(btNode);
+        return postList;
     }
+
+    @Override
+    public BTNode<K, V> getKthbigNode(int k) {
+        List<BTNode<K,V>> nodeList = doGetKthbigNode(root, k);
+        return nodeList.get(k - 1);
+    }
+
+    private List<BTNode<K, V>>  doGetKthbigNode(BTNode<K, V> btnode, int k) {
+        if (btnode == null) {
+            return new LinkedList<BTNode<K, V>>();
+        }
+        List<BTNode<K,V>> nodeList = doGetKthbigNode(btnode.getRightChild(), k);
+        if (nodeList.size() == k) {
+            return nodeList;
+        }
+        nodeList.add(btnode);
+        if (nodeList.size() == k) {
+            return nodeList;
+        }
+        nodeList.addAll(doGetKthbigNode(btnode.getLeftChild(), k - nodeList.size()));
+        return nodeList;
+    }
+
+    /**
+     * Since the inorder result is an increasing order, we can implement it using it.
+     */
+    @Override
+    public BTNode<K, V> getKthsmallNode(int k) {
+        List<BTNode<K, V>> nodeList = doGetKthsmallNode(root, k);
+        return nodeList.get(k - 1);
+    }
+
+    private List<BTNode<K, V>> doGetKthsmallNode(BTNode<K, V> btnode, int k) {
+        if (btnode == null) {
+            return new LinkedList<BTNode<K, V>>();
+        }
+
+        List<BTNode<K, V>> nodeList = doGetKthsmallNode(btnode.getLeftChild(), k);
+        if (nodeList.size() == k) {
+            return nodeList;
+        }
+        nodeList.add(btnode);
+        if (nodeList.size() == k) {
+            return nodeList;
+        }
+        nodeList.addAll(doGetKthsmallNode(btnode.getRightChild(), k - nodeList.size()));
+        return nodeList;
+    }
+
 }

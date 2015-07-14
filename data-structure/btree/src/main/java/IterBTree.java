@@ -43,4 +43,14 @@ public class IterBTree<K extends Comparable<K>, V> extends AbstractBTree<K, V> {
     public List<BTNode<K, V>> postorder(BTNode<K, V> btNode) {
         return null;
     }
+
+    @Override
+    public BTNode<K, V> getKthbigNode(int k) {
+        return null;
+    }
+
+    @Override
+    public BTNode<K, V> getKthsmallNode(int k) {
+        return null;
+    }
 }
