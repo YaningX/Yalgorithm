@@ -3,8 +3,8 @@
 ### Basic Idea
 Finding solution(s) by trying partial solutions and then abandoning them if they are not suitable.
 - a "brute force" algorithmic technique (tries all paths)
-- often implemented recursively
-<img src="https://github.com/YaningX/Yalgorithm/blob/master/docs/picture/backtracking/decisionTree.png" width="200" height="200" />
+- often implemented recursively<br>
+<img src="https://github.com/YaningX/Yalgorithm/blob/master/docs/picture/backtracking/decisionTree.png" width="400"/>
 
 #### A general pseudo-code algorithm for backtracking problems:
 ```
