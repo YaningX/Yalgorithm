@@ -16,7 +16,7 @@ Yalgorithm/
 │       ├── IterBTree
 │       └── RecBTree
 ├── geeks4geeks/
-│   └── [findMaxProduct](https://github.com/YaningX/Yalgorithm/blob/master/geeks4geeks/src/main/java/G4GSolutions.java)
+│   └── findMaxProduct
 └── backtracking/
     ├── DiceRollGame
     ├── Key2String
