@@ -17,4 +17,5 @@ Explore(choices):
 #### Application:
 - [Dice Roll Game](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/DiceRollGame.java)<br>
 &ensp; &ensp; Input an integer parameter representing a number of 6-sided dice to roll, and then output all possible combinations of values that could appear on the dice.
-- [Key Array to String Array](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/Key2String.java)
+- [Key Array to String Array](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/Key2String.java)<br>
+&ensp; &ensp; In our cell phone, the keyboard has ten number keys, i.e 0 ~ 9, and each number key is related to some chars. The goal is to turn an input set of number, and then output all possible string set.
