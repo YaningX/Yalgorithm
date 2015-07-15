@@ -20,6 +20,7 @@
     <module>data-structure</module>
     <module>geeks4geeks</module>
     <module>dynamic-programming</module>
+    <module>backtracking</module>
   </modules>
 
   <dependencies>
