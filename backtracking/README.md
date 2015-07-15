@@ -15,4 +15,4 @@ Explore(choices):
     - Un-make choice C, if necessary. (backtrack!)
 ```
 #### Application:
-- [DiceRollGame](./src/main/java/DiceRollGame.java)
+- [Dice Roll Game](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/DiceRollGame.java)
