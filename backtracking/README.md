@@ -15,6 +15,6 @@ Explore(choices):
     - Un-make choice C, if necessary. (backtrack!)
 ```
 #### Application:
-- [Dice Roll Game](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/DiceRollGame.java)
-Input an integer parameter representing a number of 6-sided dice to roll, and then output all possible combinations of values that could appear on the dice.
+- [Dice Roll Game](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/DiceRollGame.java)<br>
+    Input an integer parameter representing a number of 6-sided dice to roll, and then output all possible combinations of values that could appear on the dice.
 - [Key Array to String Array](https://github.com/YaningX/Yalgorithm/blob/master/backtracking/src/main/java/Key2String.java)
