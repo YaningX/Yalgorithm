@@ -6,8 +6,8 @@ Finding solution(s) by trying partial solutions and then abandoning them if they
 - often implemented recursively
 
 ####A general pseudo-code algorithm for backtracking problems:
-Explore(choices): <br>
 ```
+Explore(choices):
 – if there are no more choices to make: stop.
 – else:
     - Make a single choice C.
