@@ -3,6 +3,13 @@ import java.util.List;
 
 public class DiceRollGame {
 
+    /**
+     * Write a method diceRoll recursively that accepts an integer parameter representing
+     * a number of 6-sided dice to roll, and output all possible combinations
+     * of values that could appear on the dice.
+     * @param k , the times to roll a dice.
+     * @return
+     */
     public static List<List<Integer>> recDiceRoll(int k) {
         List<List<Integer>> diceList = new LinkedList<List<Integer>>();
         //bound condition is very important here, if k == 0 is the bound condition, then return a empty list,
@@ -27,5 +34,17 @@ public class DiceRollGame {
             }
         }
         return diceList;
+    }
+
+    /**
+     * Write a method diceRoll iteratively that accepts an integer parameter representing
+     * a number of 6-sided dice to roll, and output all possible combinations
+     * of values that could appear on the dice.
+     * @param k , the times to roll a dice.
+     * @return
+     */
+    public static List<List<Integer>> iteDiceRoll(int k) {
+        //TODO
+        return null;
     }
 }
