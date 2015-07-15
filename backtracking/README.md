@@ -3,7 +3,7 @@
 ### Basic Idea
 Finding solution(s) by trying partial solutions and then abandoning them if they are not suitable.
 - a "brute force" algorithmic technique (tries all paths)
-- often implemented recursively<br>
+- often implemented recursively
 #### A general pseudo-code algorithm for backtracking problems:
 ```
 Explore(choices):
