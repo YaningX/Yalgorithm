@@ -47,4 +47,45 @@ public class DiceRollGame {
         //TODO
         return null;
     }
+
+    
+    /**
+     * Write a method diceSum similar to diceRoll,
+     * but it also accepts a desired sum and prints
+     * only combinations that add up to exactly that sum.
+     * @param k , the times to roll
+     * @param sum , the sum
+     * @return
+     */
+    public static List<List<Integer>> recDiceSum(int k, int sum) {
+        if (k > sum || 6 * k < sum) {
+            return null;
+        }
+
+        List<List<Integer>> diceList = new LinkedList<List<Integer>>();
+        if (k == 1 &&  sum >= 1 && sum <= 6) {
+            List<Integer> initList = new LinkedList<Integer>();
+            initList.add(sum);
+            diceList.add(initList);
+            return diceList;
+        }
+
+        boolean flag = false;
+        for (int i = 1; i <= 6; i++) {
+            List<List<Integer>> subDiceList = recDiceSum(k - 1, sum - i);
+            if (subDiceList != null) {
+                flag = true;
+                for (List<Integer> integerList : subDiceList) {
+                    List<Integer> list = new LinkedList<Integer>();
+                    list.add(i);
+                    list.addAll(integerList);
+                    diceList.add(list);
+                }
+            }
+        }
+        if (flag == false) {
+            return null;
+        }
+        return diceList;
+    }
 }
