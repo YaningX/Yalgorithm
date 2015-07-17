@@ -5,6 +5,8 @@ Finding solution(s) by trying partial solutions and then abandoning them if they
 - a "brute force" algorithmic technique (tries all paths)
 - often implemented recursively<br>
 
+- How to find the decision tree is the critical stage.
+
 #### A general pseudo-code algorithm for backtracking problems:
 ```
 Explore(choices):
