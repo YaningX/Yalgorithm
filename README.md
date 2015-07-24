@@ -22,7 +22,7 @@ Yalgorithm/
     ├── DiceRollGame
     ├── Key2String
     ├── Permutation
-    └── SubSetSum
+    └── DPSubSetSum
 ```
 ## Maven Plugin
 - Code quality is checked by maven plugins: checkstyle, findbugs.
