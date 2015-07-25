@@ -1,5 +1,7 @@
 /**
- * a comparison sorting, nlog(n).
+ * Divide and Conquer
+ * a comparison sorting, nlog(n),
+ * Can be stable.
  */
 public class MergeSort {
     //bottom up

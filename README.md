@@ -20,7 +20,7 @@ Yalgorithm/
 │   └── findMaxProduct
 ├── sort/
 │       ├── CountingSort
-│       ├── MergeSort
+│       ├── *MergeSort
 │       ├── Qsort
 │       ├── HeapSort
 │       ├── BubbleSort
