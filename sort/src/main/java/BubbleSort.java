@@ -1,5 +1,5 @@
 /**
- * bubble sort.
+ * bubble sort, a comparison sorting, stable.
  * 1) 5 2 4 1 3
  *      a. 2 5 4 1 3
  *      b. 2 4 5 1 3
