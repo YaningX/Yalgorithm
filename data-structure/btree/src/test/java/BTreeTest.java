@@ -30,7 +30,6 @@ public class BTreeTest {
 
     @Test
     public void addBTNodeTest() {
-        Integer integer = new Integer(0);
         Pair<Integer, Integer> pair = new Pair<Integer, Integer>(1, 2);
         System.out.println(pair.getKey());
         System.out.println(pair.getValue());

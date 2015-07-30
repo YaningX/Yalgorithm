@@ -21,6 +21,7 @@
     <module>geeks4geeks</module>
     <module>dynamic-programming</module>
     <module>backtracking</module>
+    <module>sort</module>
   </modules>
 
   <dependencies>

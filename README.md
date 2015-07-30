@@ -18,11 +18,18 @@ Yalgorithm/
 │       └── RecBTree
 ├── geeks4geeks/
 │   └── findMaxProduct
+├── sort/
+│       ├── CountingSort
+│       ├── *MergeSort
+│       ├── Qsort
+│       ├── HeapSort
+│       ├── BubbleSort
+│       └── SelectSort
 └── backtracking/
     ├── DiceRollGame
     ├── Key2String
     ├── Permutation
-    └── SubSetSum
+    └── DPSubSetSum
 ```
 ## Maven Plugin
 - Code quality is checked by maven plugins: checkstyle, findbugs.
