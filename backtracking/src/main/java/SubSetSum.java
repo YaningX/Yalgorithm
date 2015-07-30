@@ -42,7 +42,7 @@ public class SubSetSum {
                 break;
             }
         }
-
+        
         return resultList;
     }
 
