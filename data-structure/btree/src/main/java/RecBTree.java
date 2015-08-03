@@ -2,7 +2,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Implment BTree by using recursive trick.
+ * 1) Implment BTree by using recursive trick.
+ * 2) Like the initialized container is empty.
  */
 public class RecBTree<K extends Comparable<K>, V> extends AbstractBTree<K, V> {
 
