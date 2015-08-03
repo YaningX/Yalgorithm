@@ -8,7 +8,7 @@
 
 ###Where to run Maven from?
 
-It should be run in the top directory of Kerby.
+It should be run at the top directory of Kerby.
 
 ###Maven build goals:
 
