@@ -5,10 +5,11 @@
 * Maven 3.0 or later
 * Findbugs 1.3.9 (if running findbugs)
 * Internet connection for first build (to fetch all Maven and Kerby dependencies)
-============
+
 ###Where to run Maven from?
+
 It should be run in the top directory of Kerby.
--------------
+
 ###Maven build goals:
 
 * Clean         : mvn clean [-Preleasedocs]
