@@ -1,5 +1,5 @@
 #Build instructions for Kerby
-============
+-------------
 ###Requirements:
 * JDK 1.7+
 * Maven 3.0 or later
@@ -24,6 +24,6 @@ It should be run in the top directory of Kerby.
 ###Build options:
 
 * To run findbugs without running tests : mvn clean package -DskipTests findbugs:findbugs [site]
-* Building distributions  without running tests : mvn package -Pdist -DskipTests (tar package in /kerby/kerby-dist/kdc-dist/target/ & /kerby/kerby-dist/tool-dist/target/)
-* Generate javadoc without running tests: mvn clean package -DskipTests javadoc:javadoc
+* Building distributions  without running tests : mvn package -Pdist -DskipTests  (tar package in /kerby/kerby-dist/kdc-dist/target/ & /kerby/kerby-dist/tool-dist/target/)
+* Generate javadoc without running tests: mvn clean package -DskipTests javadoc:javadoc<br />
 Note: checkstyle plugin & pmd plugin are run by default.
