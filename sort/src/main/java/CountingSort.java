@@ -5,8 +5,9 @@
  *              Once we get it, we can put x in the right position.
  * Time complexity O(n + k). n is the input size & k is the input range.
  */
-public class CountingSort {
-    public static int[] countingSort(int[] array) {
+public class CountingSort implements Sort {
+    @Override
+    public int[] sort(int[] array) {
         array = array.clone();
         int[] resArray = new int[array.length];
         int min = array[0], max = array[0];

@@ -11,14 +11,15 @@
  * Base case: left == right.
  *
  */
-public class Qsort {
-    public static int[] recQsort(int[] numbers) {
+public class Qsort implements Sort{
+    @Override
+    public int[] sort(int[] numbers) {
         int[] resArray = numbers.clone();
         doRecQsort(resArray, 0, numbers.length - 1);
         return resArray;
     }
 
-    private static void doRecQsort(int[] numbers, int left, int right) {
+    private void doRecQsort(int[] numbers, int left, int right) {
         if (left < right) {
             int pos = partition(numbers, left, right);
             doRecQsort(numbers, left, pos - 1);
@@ -27,7 +28,7 @@ public class Qsort {
     }
 
     //more easy to code.
-    private static int partition(int[] numbers, int left, int right) {
+    private int partition(int[] numbers, int left, int right) {
         int key = numbers[right];
         int low = left;
         for (int i = left; i < right; i++) {
@@ -44,7 +45,7 @@ public class Qsort {
     }
 
     //fill the pit
-    private static int partition0(int[] numbers, int left, int right) {
+    private int partition0(int[] numbers, int left, int right) {
         int low = left;
         int high = right;
         int key = numbers[right];

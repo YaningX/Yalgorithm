@@ -9,8 +9,9 @@
  * 3) 2 1 3 4 5
  * 4) 1 2 3 4 5
  */
-public class BubbleSort {
-    public static int[] simplyBubbleSort(int[] numbers) {
+public class BubbleSort implements Sort {
+    @Override
+    public int[] sort(int[] numbers) {
         int[] resArray = numbers.clone();
         for (int i = 1; i < resArray.length; i++) {
             for (int j = 0; j < resArray.length - i; j++) {
@@ -29,7 +30,7 @@ public class BubbleSort {
      * @param numbers
      * @return
      */
-    public static int[] optimizedBubbleSort(int[] numbers) {
+    public int[] optimizedBubbleSort(int[] numbers) {
         int[] resArray = numbers.clone();
         int lastSwap = resArray.length - 1;
         while (lastSwap != -1) {

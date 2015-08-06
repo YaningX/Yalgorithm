@@ -3,9 +3,10 @@
  * a comparison sorting, nlog(n),
  * Can be stable.
  */
-public class MergeSort {
+public class MergeSort implements Sort {
     //bottom up
-    public static int[] mergeSort(int[] numbers) {
+    @Override
+    public int[] sort(int[] numbers) {
         int[] resArray = numbers.clone();
         int k = 1;
         while (k < resArray.length) {
@@ -24,7 +25,7 @@ public class MergeSort {
     }
 
     //merge two parts of an array, [i, j] [j + 1, t]
-    private static void merge(int[] numbers, int i, int j, int t) {
+    private void merge(int[] numbers, int i, int j, int t) {
         int[] tmpArray = new int[t - i + 1];
         int k = 0;
         int tmpi = i;
