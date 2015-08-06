@@ -22,6 +22,7 @@
     <module>dynamic-programming</module>
     <module>backtracking</module>
     <module>sort</module>
+    <module>string</module>
   </modules>
 
   <dependencies>
