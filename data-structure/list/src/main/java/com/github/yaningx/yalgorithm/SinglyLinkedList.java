@@ -1,9 +1,20 @@
 package com.github.yaningx.yalgorithm;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Representation:
+ *      A linked list is represented by a pointer to the first node of the linked list.
+ *The first node is called head(or first). If the linked list is empty, then value of head is NULL.
+ *Each node in a list consists of at least two parts:
+ *      1) data;
+ *      2) pointer to the next node.
+ *
+ * Advantages over arrays:
+ *      1) Dynamic size;
+ *      2) Ease of insertion/deletion.
+ * Drawbacks:
+ *      1) Random access is not allowed;
  * Reference LinkedList.
  * @param <T>
  */
