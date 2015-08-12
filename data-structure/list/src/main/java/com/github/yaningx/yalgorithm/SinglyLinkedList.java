@@ -27,6 +27,16 @@ public class SinglyLinkedList<T> {
 
     }
 
+    public int getSize() {
+        int size = 0;
+        Node<T> tNode = first;
+        while (tNode != null) {
+            tNode = tNode.next;
+            size++;
+        }
+        return size;
+    }
+    
     private static class Node<T> {
         T value;
         Node<T> next;
