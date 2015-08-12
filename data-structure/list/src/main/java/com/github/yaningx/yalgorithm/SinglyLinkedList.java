@@ -36,7 +36,7 @@ public class SinglyLinkedList<T> {
         }
         return size;
     }
-    
+
     private static class Node<T> {
         T value;
         Node<T> next;
@@ -47,6 +47,25 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public boolean search(T val) {
+        Node<T> tNode = first;
+        while (tNode != null) {
+            if (tNode.value.equals(val)) {
+                return true;
+            }
+            tNode = tNode.next;
+        }
+        return false;
+    }
+
+    /**
+     * 1) Initialize a node pointer, current = head.
+     * 2) Do following while current is not NULL
+     *      a) current->key is equal to the key being searched return true.
+     *      b) current = current->next
+     * 3) Return false
+     * @param value
+     */
     public void addLast(T value) {
         Node<T> newNode = new Node<T>(value, null);
         if (size == 0) {
