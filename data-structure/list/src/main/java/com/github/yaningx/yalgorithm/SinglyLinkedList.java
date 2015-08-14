@@ -124,4 +124,27 @@ public class SinglyLinkedList<T> {
         first = head;
         last = end;
     }
+
+    /**
+     * detect whether there is a loop in the list;
+     * @return
+     */
+    public boolean hasLoop() {
+        Node<T> slowNode = first;
+        Node<T> fastNode = first;
+        while (fastNode != null) {
+            if (fastNode == slowNode) {
+                return true;
+            }
+            fastNode = fastNode.next;
+            if (fastNode != null) {
+                if (fastNode == slowNode) {
+                    return true;
+                }
+                fastNode = fastNode.next;
+                slowNode = slowNode.next;
+            }
+        }
+        return false;
+    }
 }
