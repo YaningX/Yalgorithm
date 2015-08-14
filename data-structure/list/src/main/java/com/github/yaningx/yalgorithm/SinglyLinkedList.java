@@ -109,20 +109,23 @@ public class SinglyLinkedList<T> {
      * @return
      */
     public void reverse() {
-        if (size == 0) {
-            return;
-        }
+        first = reverse(first);
+    }
 
-        Node<T> head = first;
-        Node<T> end = first;
-        while (end.next != null) {
-            Node<T> tmp = end.next;
-            end.next = tmp.next;
-            tmp.next = head;
-            head = tmp;
+    private Node<T> reverse(Node<T> node) {
+        if (node == null) {
+            return null;
         }
-        first = head;
-        last = end;
+        Node<T> head = node;
+        Node<T> end = node;
+        Node<T> tNode;
+        while (end.next != null) {
+            tNode = end.next;
+            end.next = tNode.next;
+            tNode.next = head;
+            head = tNode;
+        }
+        return head;
     }
 
     /**
@@ -146,5 +149,38 @@ public class SinglyLinkedList<T> {
             }
         }
         return false;
+    }
+
+    /**
+     * *********************************************
+     * To check if a singly linked list is palindrome.
+     * for odd: [1, (size + 1) / 2], [(size + 1) / 2 + 1, size] // the second half list has one more node than the first half list;
+     * for even: [1, size / 2], [size / 2 + 1, size] ==> [1, (size + 1) / 2], [(size + 1) / 2 + 1, size]
+     * @return
+     */
+    public boolean isPalindrome() {
+        int size = getSize();
+        if (size == 0 || size == 1) {
+            return true;
+        }
+        Node<T> head = first;
+        Node<T> midNode = first;
+        int num = 1;
+        while (num != (size + 1) / 2) {
+            midNode = midNode.next;
+            num++;
+        }
+
+        Node<T> secondHead = midNode.next;
+        secondHead = reverse(secondHead);
+        Node<T> tNode = secondHead;
+        while (tNode != null) {
+            if (!tNode.value.equals(head.value)) {
+                return false;
+            }
+            tNode = tNode.next;
+            head = head.next;
+        }
+        return true;
     }
 }
