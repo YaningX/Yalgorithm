@@ -28,8 +28,12 @@ public class SinglyLinkedList<T> {
     }
 
     public int getSize() {
+        return getSize(first);
+    }
+
+    public int getSize(Node<T> head) {
         int size = 0;
-        Node<T> tNode = first;
+        Node<T> tNode = head;
         while (tNode != null) {
             tNode = tNode.next;
             size++;
@@ -182,5 +186,38 @@ public class SinglyLinkedList<T> {
             head = head.next;
         }
         return true;
+    }
+
+    /**
+     * Return the intersection of two singly linked lists.
+     *  1) use two loops;
+     *  2) mark one linked list using additional resource;
+     *  3) calculate the distance of two linked lists.
+     * @param head1
+     * @param head2
+     * @return
+     */
+    public T getIntersection(Node<T> head1, Node<T> head2) {
+        int differ = getSize(head1) - getSize(head2);
+        if (differ > 0) {
+            while (differ != 0) {
+                head1 = head1.next;
+                differ--;
+            }
+        }
+        if (differ < 0) {
+            while (differ != 0) {
+                head2 = head2.next;
+                differ++;
+            }
+        }
+        while (head1 != null) {
+            if (head1 == head2) {
+                return head1.value;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+        return null;
     }
 }
