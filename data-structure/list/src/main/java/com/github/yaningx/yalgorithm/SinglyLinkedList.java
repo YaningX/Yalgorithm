@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
  *      1) insert: head, body, tail;
  *      2) delete: head, body, tail;
  *      3) other complex operations can be completed by the above two basic operations.
+ *         Usually, operations in the head and tail should be considered separately, especially in the head.
  *
  * Advantages over arrays:
  *      1) Dynamic size;
