@@ -10,6 +10,11 @@ import java.util.NoSuchElementException;
  *      1) data;
  *      2) pointer to the next node.
  *
+ *Basic operations:
+ *      1) insert: head, body, tail;
+ *      2) delete: head, body, tail;
+ *      3) other complex operations can be completed by the above two basic operations.
+ *
  * Advantages over arrays:
  *      1) Dynamic size;
  *      2) Ease of insertion/deletion.
@@ -193,6 +198,7 @@ public class SinglyLinkedList<T> {
      *  1) use two loops;
      *  2) mark one linked list using additional resource;
      *  3) calculate the distance of two linked lists.
+     *  4£©make a circle in the first list.
      * @param head1
      * @param head2
      * @return
@@ -219,5 +225,35 @@ public class SinglyLinkedList<T> {
             head2 = head2.next;
         }
         return null;
+    }
+
+    /************************************************
+     * Swap nodes pairwise
+     *      1) 1->2->3->4->5      2->1->4->3->5
+     *      2) 1->2->3->4->5->6     2->1->4->3->6->5
+     */
+    public void pairSwap() {
+        first = pairSwap(first);
+    }
+
+    private Node<T> pairSwap(Node<T> head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node<T> tNode = head.next;
+        head.next = tNode.next;
+        tNode.next = head;
+        head = tNode;
+        Node<T> preNode = head.next;
+
+        while (preNode.next != null && preNode.next.next != null) {
+            tNode = preNode.next;
+            preNode.next = tNode.next;
+            tNode.next = preNode.next.next;
+            preNode.next.next = tNode;
+            preNode = preNode.next.next;
+        }
+        return head;
     }
 }
