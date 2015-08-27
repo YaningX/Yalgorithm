@@ -11,8 +11,19 @@ import java.util.NoSuchElementException;
  *      2) pointer to the next node.
  *
  *Basic operations:
- *      1) insert: head, body, tail;
- *      2) delete: head, body, tail;
+ *      1) insert:
+ *                 empty: included in head background;
+ *                 head: addNode.next = head;
+ *                       head = addNode;
+ *                       return head;
+ *                 body: addNode.next = preNode.next;
+ *                       preNode.next = addNode;
+ *                       return head;
+ *                 tail: included in the body.
+ *      2) delete:
+ *                 head: return head.next;
+ *                 body: preNode.next = preNode.next.next;
+ *                 tail: included in the body.
  *      3) other complex operations can be completed by the above two basic operations.
  *         Usually, operations in the head and tail should be considered separately, especially in the head.
  *
@@ -199,7 +210,7 @@ public class SinglyLinkedList<T> {
      *  1) use two loops;
      *  2) mark one linked list using additional resource;
      *  3) calculate the distance of two linked lists.
-     *  4£©make a circle in the first list.
+     *  4ï¿½ï¿½make a circle in the first list.
      * @param head1
      * @param head2
      * @return
