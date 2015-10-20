@@ -268,4 +268,41 @@ public class SinglyLinkedList<T> {
         }
         return head;
     }
+
+    public Node<T> reverseKGroup(int k) {
+        return reverseKGroup(first, k);
+    }
+
+    private Node<T> reverseKGroup(Node head, int k) {
+        if (head == null || k == 1) {
+            return head;
+        }
+
+        Node<T> pre = new Node<T>(null, head);
+
+
+        int i = 0;
+        while (head != null) {
+            i++;
+            if (i % k == 0) {
+                pre = reverse(pre, k);
+                head = head.next;
+            } else {
+                head = head.next;
+            }
+        }
+        return pre.next;
+    }
+
+    private Node<T> reverse(Node pre, int k) {
+        Node<T> last = pre.next;
+        Node<T> cur = last.next;
+        for (int i = 0; i < k - 1; i++) {
+            last.next = cur.next;
+            cur.next = pre.next;
+            pre.next = cur;
+            cur = last.next;
+        }
+        return last;
+    }
 }
