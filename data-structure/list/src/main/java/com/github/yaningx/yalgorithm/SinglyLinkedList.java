@@ -278,8 +278,8 @@ public class SinglyLinkedList<T> {
             return head;
         }
 
-        Node<T> pre = new Node<T>(null, head);
-
+        Node<T> dummy = new Node<T>(null, head);
+        Node<T> pre = dummy;
 
         int i = 0;
         while (head != null) {
