@@ -14,6 +14,10 @@ public class SortTest {
     public void heapSortTest() {
         Sort sort = new HeapSort();
         process(sort);
+        int x = Integer.MIN_VALUE;
+        System.out.println((long)8);
+        int[][] array = new int[7][7];
+        System.out.print(array.length);
     }
 
     @Test

@@ -2,6 +2,7 @@
  * Not a stable sort, comparison.
  * Based on Divide-and-Conquer.
  *
+ * Time Complexity T(n) = T(n/2) + n ==> O(nlogn),, Space Complexity O(1)
  * key idea: Select a pivot key in array[], usually key = array[0],
  * then the elements smaller than key are on key's left and the elements larger than key are on key's right.
  * It means key is on the right position of array[].
@@ -19,6 +20,7 @@ public class Qsort implements Sort{
         return resArray;
     }
 
+    //The idea of dichotomy has been used int quick sort.
     private void doRecQsort(int[] numbers, int left, int right) {
         if (left < right) {
             int pos = partition(numbers, left, right);
@@ -27,20 +29,18 @@ public class Qsort implements Sort{
         }
     }
 
-    //more easy to code.
     private int partition(int[] numbers, int left, int right) {
-        int key = numbers[right];
         int low = left;
         for (int i = left; i < right; i++) {
-            if (numbers[i] <= key) {
+            if (numbers[i] <= numbers[right]) {
                 int tmp = numbers[i];
                 numbers[i] = numbers[low];
                 numbers[low++] = tmp;
             }
         }
-        //put key at the right position.
+        int tmp = numbers[right];
         numbers[right] = numbers[low];
-        numbers[low] = key;
+        numbers[low] = tmp;
         return low;
     }
 

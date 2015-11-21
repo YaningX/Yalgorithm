@@ -1,52 +1,45 @@
 /**
  * Divide and Conquer
- * a comparison sorting, nlog(n),
+ * a comparison sorting, 0(nlog(n)),
  * Can be stable.
  */
 public class MergeSort implements Sort {
     //bottom up
     @Override
     public int[] sort(int[] numbers) {
-        int[] resArray = numbers.clone();
-        int k = 1;
-        while (k < resArray.length) {
-            int s = k;
-            k = 2 * s;
+        for (int halfSize = 1; halfSize < numbers.length; halfSize *= 2) {
             int i = 0;
-            while (i + k <= resArray.length) {
-                merge(resArray, i, i + s - 1, i + k - 1);
-                i += k;
+            while (i + 2 * halfSize <= numbers.length) {
+                merge(numbers, i, i + halfSize - 1, i + 2 * halfSize - 1);
+                i += (2 * halfSize);
             }
-            if (i + s - 1 < resArray.length - 1) {
-                merge(resArray, i, i + s - 1, resArray.length - 1);
+
+            if (i + halfSize -1 < numbers.length - 1) {
+                merge(numbers, i, i + halfSize - 1, numbers.length - 1);
             }
         }
-        return resArray;
+        return numbers;
     }
 
     //merge two parts of an array, [i, j] [j + 1, t]
-    private void merge(int[] numbers, int i, int j, int t) {
-        int[] tmpArray = new int[t - i + 1];
-        int k = 0;
-        int tmpi = i;
-        int s = j + 1;
-        while (tmpi <= j && s <= t) {
-            if (numbers[tmpi] <= numbers[s]) {
-                tmpArray[k++] = numbers[tmpi++];
+    //Two sets: numbers[i, i + 1, ..., i + j - 1] and numbers[i + j, ....., t]
+    private void merge(int[] numbers, int left, int mid, int right) {
+        int[] tmp = new int[right - left + 1];
+        int i = left, j = mid + 1, k = 0;
+        while (i <= mid && j <= right) {
+            if (numbers[i] <= numbers[j]) {
+                tmp[k++] = numbers[i++];
             } else {
-                tmpArray[k++] = numbers[s++];
+                tmp[k++] = numbers[j++];
             }
         }
-        if (tmpi <= j) {
-            while (k < tmpArray.length) {
-                tmpArray[k++] = numbers[tmpi++];
-            }
+
+        if (i > mid) {
+            System.arraycopy(numbers, j, tmp, k, right - j + 1);
+        } else {
+            System.arraycopy(numbers, i, tmp, k, mid - i + 1);
         }
-        if (s <= t) {
-            while (k < tmpArray.length) {
-                tmpArray[k++] = numbers[s++];
-            }
-        }
-        System.arraycopy(tmpArray, 0, numbers, i, tmpArray.length);
+
+        System.arraycopy(tmp, 0, numbers, left, tmp.length);
     }
 }
