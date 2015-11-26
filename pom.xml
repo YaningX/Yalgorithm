@@ -23,6 +23,7 @@
     <module>backtracking</module>
     <module>sort</module>
     <module>string</module>
+    <module>leetcode</module>
   </modules>
 
   <dependencies>

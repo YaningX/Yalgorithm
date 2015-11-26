@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * producing all permutations of a set of values.
@@ -22,4 +23,5 @@ public class Permutation {
         }
         return stringList;
     }
+
 }

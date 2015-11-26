@@ -13,7 +13,7 @@ public class HeapSort implements Sort {
     public int[] sort(int[] numbers) {
         int[] resArray = numbers.clone();
         buildMaxHeap(resArray);
-        for (int i = resArray.length - 1; i >= 0; i--) {
+        for (int i = resArray.length - 1; i >= 1; i--) {
             int tmp = resArray[0];
             resArray[0] = resArray[i];
             resArray[i] = tmp;
@@ -54,8 +54,8 @@ public class HeapSort implements Sort {
      * Heapify an array in bottom up order,
      * base case: the last layer in the binary tree/heap
      *            better: the last second layer in the binary tree/heap
-     *            2 * parentIdex + 2 = heapSize ==> parentIndex = heapSize / 2 - 1
-     *            or 2 * parentIdex + 3 = heapSize ==> parentIndex = heapSize/2 - 1
+     *            2 * parentIdex + 1 + 1 = heapSize ==> parentIndex = heapSize / 2 - 1
+     *            or 2 * parentIdex + 2 + 1 = heapSize ==> parentIndex = heapSize/2 - 1
      *            So base case: parentIndex = heapSize / 2 - 1.
      *
      * @param numbers

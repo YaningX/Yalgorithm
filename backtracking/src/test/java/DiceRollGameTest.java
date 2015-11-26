@@ -4,11 +4,11 @@ public class DiceRollGameTest {
 
     @Test
     public void recDiceRollTest() {
-        System.out.println(DiceRollGame.recDiceRoll(3).size());
+        System.out.println(DiceRollGame.iteDiceRoll(3).size());
     }
 
     @Test
     public void recDiceSumTest() {
-        System.out.println(DiceRollGame.recDiceSum(21, 100));
+        System.out.println(DiceRollGame.iteDiceSum(6, 30).size());
     }
 }

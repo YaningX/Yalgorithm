@@ -1,5 +1,6 @@
-import java.util.LinkedList;
-import java.util.List;
+import com.sun.tools.javac.util.ListBuffer;
+
+import java.util.*;
 
 public class DiceRollGame {
 
@@ -44,11 +45,32 @@ public class DiceRollGame {
      * @return
      */
     public static List<List<Integer>> iteDiceRoll(int k) {
-        //TODO
+        Queue<List<Integer>> queue = new LinkedList<List<Integer>>();
+
+        for (int i = 1; i <= 6; i++) {
+            List<Integer> list = new LinkedList<Integer>();
+            list.add(i);
+            queue.add(list);
+        }
+
+        while (!queue.isEmpty()) {
+            List<Integer> list = queue.remove();
+            if (list.size() == k) {
+                queue.add(list);
+                return new LinkedList<List<Integer>>(queue);
+            }
+            for (int i = 1; i <= 6; i++) {
+                List<Integer> tmpList = new LinkedList<Integer>(list);
+                tmpList.add(i);
+                queue.add(tmpList);
+            }
+        }
+
         return null;
     }
 
-    
+
+
     /**
      * Write a method diceSum similar to diceRoll,
      * but it also accepts a desired sum and prints
@@ -88,4 +110,51 @@ public class DiceRollGame {
         }
         return diceList;
     }
+
+
+    public static List<List<Integer>> iteDiceSum(int k, int sum) {
+        Queue<List<Integer>> queue = new ListBuffer<List<Integer>>();
+
+        for (int i = 1; i <= 6; i++) {
+            List<Integer> list = new LinkedList<Integer>();
+            list.add(i);
+            queue.add(list);
+        }
+
+        while (!queue.isEmpty()) {
+            List list = queue.remove();
+            if (list.size() == k) {
+                queue.add(list);
+                break;
+            }
+
+            for (int i = 1; i<= 6; i++) {
+                List<Integer> tmpList = new LinkedList<Integer>(list);
+                tmpList.add(i);
+                if (listSum(tmpList) <= sum) {
+                    queue.add(tmpList);
+                }
+            }
+        }
+
+        Iterator<List<Integer>> iterator = queue.iterator();
+        List<List<Integer>> resList = new LinkedList<List<Integer>>();
+        while (iterator.hasNext()) {
+            List list = iterator.next();
+            if (listSum(list) == sum) {
+                resList.add(list);
+            }
+        }
+        return resList;
+    }
+
+    private static int listSum(List<Integer> list) {
+        Iterator<Integer> iterator = list.iterator();
+        int sum = 0;
+        while(iterator.hasNext()) {
+            sum += iterator.next();
+        }
+        return sum;
+    }
+
 }
