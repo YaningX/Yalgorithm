@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubSetSumTest {
@@ -13,10 +14,8 @@ public class SubSetSumTest {
 
     @Test
     public void testList() {
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        System.out.println(list.subList(3, list.size()));
+        System.out.println(new NQueens().iteSolveNQueens(4).size());
     }
+
+
 }
