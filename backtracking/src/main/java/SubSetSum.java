@@ -12,6 +12,32 @@ import java.util.List;
  */
 public class SubSetSum {
 
+    public static List<List<Integer>> recSubsetSum0(int[] array, int target) {
+        List<List<Integer>> result = new LinkedList<List<Integer>>();
+        if (array == null || array.length == 0) {
+            return result;
+        }
+        List<Integer> currentList = new LinkedList<Integer>();
+        doRecSubsetSum(array, target, 0, currentList, result);
+        return result;
+    }
+
+    private static void doRecSubsetSum(int[] array, int target, int j, List<Integer> currentList, List<List<Integer>> result) {
+        if (target == 0) {
+            List<Integer> tmpList = new LinkedList<Integer>(currentList);
+            result.add(tmpList);
+            return;
+        }
+        for (int i = j + 1; i < array.length; i++) {
+            if (target < array[i]) {
+                return;
+            }
+            currentList.add(array[i]);
+            doRecSubsetSum(array, target - array[i], i, currentList, result);
+            currentList.remove(currentList.size() - 1);
+        }
+    }
+
     public static List<List<Integer>> recSubsetSum(int[] array, int sum) {
         Arrays.sort(array);
         List<Integer> intList = new LinkedList<Integer>();
