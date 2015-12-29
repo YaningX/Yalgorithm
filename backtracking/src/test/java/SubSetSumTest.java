@@ -28,4 +28,13 @@ public class SubSetSumTest {
         list.add(2);
         System.out.println(result);
     }
+
+    @Test
+    public void testArray() {
+        String[] strings = {"bca", "cab", "abc"};
+        Arrays.sort(strings);
+        for (String string: strings) {
+            System.out.println(string);
+        }
+    }
 }
