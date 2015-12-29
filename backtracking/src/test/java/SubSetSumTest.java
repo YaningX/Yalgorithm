@@ -31,10 +31,6 @@ public class SubSetSumTest {
 
     @Test
     public void testArray() {
-        String[] strings = {"bca", "cab", "abc"};
-        Arrays.sort(strings);
-        for (String string: strings) {
-            System.out.println(string);
-        }
+        System.out.println(4<<1);
     }
 }
