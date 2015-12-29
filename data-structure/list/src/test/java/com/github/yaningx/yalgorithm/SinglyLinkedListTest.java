@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SinglyLinkedListTest {
     private SinglyLinkedList<Integer> linkedList;
@@ -47,5 +49,20 @@ public class SinglyLinkedListTest {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+    }
+
+    @Test
+    public void testIterator() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            iterator.remove();
+        }
+        System.out.println(list);
+
     }
 }

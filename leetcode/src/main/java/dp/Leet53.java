@@ -4,6 +4,7 @@ package dp;
  * Created by xuyaning on 29/12/15.
  */
 public class Leet53 {
+    //最长子序列和问题
     public int maxSubArray(int[] nums) {
         if (nums.length == 0) {
             return 0;
