@@ -7,7 +7,7 @@ import java.util.List;
  * Created by xuyaning on 30/12/15.
  */
 public class Leet57 {
-    
+
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         ArrayList<Interval> result = new ArrayList<Interval>();
         for(Interval interval: intervals) {
