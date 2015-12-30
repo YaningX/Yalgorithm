@@ -1,9 +1,6 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class SubSetSumTest {
     @Test
@@ -32,5 +29,14 @@ public class SubSetSumTest {
     @Test
     public void testArray() {
         System.out.println(4<<1);
+    }
+
+    @Test
+    public void testMap() {
+        Map<Integer, Integer> map = new TreeMap<Integer, Integer>();
+        map.put(2, 1);
+        map.put(1, 5);
+        map.put(-3, 6);
+        System.out.println(map);
     }
 }
