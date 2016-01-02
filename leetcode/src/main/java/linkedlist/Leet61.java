@@ -21,7 +21,7 @@ public class Leet61 {
             slow = slow.next;
             fast = fast.next;
         }
-        
+
         fast.next = head;
         head = slow.next;
         slow.next = null;
