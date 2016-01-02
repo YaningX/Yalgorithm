@@ -43,4 +43,13 @@ public class SortTest {
         Sort sort = new Qsort();
         process(sort);
     }
+
+    @Test
+    public void testSplit() {
+        String s = "a b  c     dd";
+        String[] strings = s.split("\\s+");
+        for (String string: strings) {
+            System.out.println(string);
+        }
+    }
 }
