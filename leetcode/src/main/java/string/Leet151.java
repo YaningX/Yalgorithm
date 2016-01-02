@@ -27,4 +27,31 @@ public class Leet151 {
         }
         return sb.toString();
     }
+
+    public String recReverseWords(String s) {
+        s = s.trim();
+        return helper(s, 0).toString();
+    }
+
+    private StringBuilder helper(String s, int index) {
+        StringBuilder cur = new StringBuilder();
+        if (index >= s.length()) {
+            return cur;
+        }
+
+        int lastIndex = index;
+        while (index < s.length() && s.charAt(index) != ' ') {
+            cur.append(s.charAt(index++));
+        }
+
+        while (index < s.length() && s.charAt(index) == ' ') {
+            index++;
+        }
+
+        if (lastIndex == 0) {
+            return helper(s, index).append(cur);
+        } else {
+            return helper(s, index).append(cur).append(' ');
+        }
+    }
 }
