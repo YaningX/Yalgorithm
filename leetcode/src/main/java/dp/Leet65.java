@@ -5,5 +5,8 @@ package dp;
  */
 public class Leet65 {
     //有限状态机
+    private void test() {
+        Integer.valueOf('c');
+    }
 
 }
