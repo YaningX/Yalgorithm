@@ -1,7 +1,7 @@
 package dp;
 
 /**
- * Created by xuyaning on 7/1/16.
+ * http://www.cnblogs.com/lihaozy/archive/2012/12/31/2840152.html
  */
 public class Leet72 {
     public int minDistance(String word1, String word2) {
