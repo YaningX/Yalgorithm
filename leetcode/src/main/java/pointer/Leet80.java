@@ -7,7 +7,7 @@ import java.util.TreeMap;
  * Created by xuyaning on 7/1/16.
  */
 public class Leet80 {
-    public int removeDuplicates(int[] nums) {
+    public int badRemoveDuplicates(int[] nums) {
         Map<Integer, Integer> counterMap = new TreeMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             if (counterMap.containsKey(nums[i])) {
@@ -25,5 +25,29 @@ public class Leet80 {
             }
         }
         return i;
+    }
+
+    //use two pointers
+    public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int fast = 1;
+        int low = 1;
+        int counter = 1;
+        while (fast < nums.length) {
+            if (nums[fast] == nums[fast - 1]) {
+                if (counter == 1) {
+                    nums[low++] = nums[fast];
+                    counter++;
+                }
+                fast++;
+            } else {
+                nums[low++] = nums[fast++];
+                counter = 1;
+            }
+        }
+        return low;
     }
 }
