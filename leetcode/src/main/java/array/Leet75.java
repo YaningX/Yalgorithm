@@ -1,7 +1,7 @@
 package array;
 
 /**
- * Created by xuyaning on 7/1/16.
+ * http://www.lifeincode.net/programming/leetcode-sort-colors-java/
  */
 public class Leet75 {
     public void sortColors(int[] A) {

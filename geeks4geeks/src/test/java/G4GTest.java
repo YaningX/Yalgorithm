@@ -30,4 +30,13 @@ public class G4GTest {
             + "\n while the right result is : " + Arrays.toString(expectedResult));
         }
     }
+
+    @Test
+    public void testStrEqual() {
+        String str1 = new String("abc");
+        String str2 = new String("abc");
+        System.out.println(str1 == str2);
+        System.out.println(str1.equals(str2));
+        System.out.println(str1 == "abc");
+    }
 }
