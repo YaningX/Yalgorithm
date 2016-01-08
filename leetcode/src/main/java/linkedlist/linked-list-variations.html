@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Linked List Variations</TITLE>
+<META NAME="description" CONTENT="Linked List Variations">
+<META NAME="keywords" CONTENT="linked-list-variations">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="linked-list-variations.css">
+
+</HEAD>
+
+<BODY >
+<H1 ALIGN="CENTER">Linked List Variations</H1>
+<DIV CLASS="author_info">
+
+</DIV>
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+In this handout, we discuss variations on linked lists:
+
+<UL>
+<LI>Doubly-linked lists
+</LI>
+<LI>Cyclic lists
+</LI>
+<LI>Dummy nodes
+</LI>
+<LI>Endogenous lists
+</LI>
+</UL>
+The textbook also does so (section 4.6 on pages 232-234),
+and we recommend you read that too.
+All these variations (and combinations thereof) are used in
+professional practice.
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+Doubly-Linked Lists</A>
+</H1>
+
+<P>
+A traditional (singly-linked) list has just one link per node:
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="212" HEIGHT="34" ALIGN="BOTTOM" BORDER="0"
+ SRC="linked-list-variations-img2.png"
+ ALT="\begin{picture}(120,20)
+\put(0,0){\FrameBox(20,20){}}
+\put(0,10){\line(1,0){20}}...
+...{\line(1,0){20}}
+\put(90,5){\vector(1,0){30}}
+\put(120,10){\ldots}
+\end{picture}">
+<BR>
+</DIV>
+But this makes it infeasible to transverse the list
+backwards, such as one may need to do to remove a node.
+So <SPAN  CLASS="textit">doubly-linked</SPAN> nodes include <SPAN  CLASS="textit">two</SPAN> links per node:
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="245" HEIGHT="50" ALIGN="BOTTOM" BORDER="0"
+ SRC="linked-list-variations-img3.png"
+ ALT="\begin{picture}(120,30)
+\put(-20,12){\line(0,1){6}}
+\put(-21,12){\line(0,1){6}}
+...
+...ctor(1,0){30}}
+\put(90,15){\vector(-1,0){30}}
+\put(120,15){\ldots}
+\end{picture}">
+<BR>
+</DIV>
+A typical node declaration is as follows:<PRE>
+private class Node {
+  int data;
+  Node prev;
+  Node next;
+  public Node(int d, Node p, Node n) {
+    data = d;
+    prev = p;
+    next = n;
+  }
+}
+</PRE>
+When inserting or removing nodes in a doubly-linked list, there are
+twice as many links to change as with a singly-linked list.
+If your code is ever changing the ``next'' field of some node, it
+should probably also be changing the ``prev'' field of a related node.
+This property will help you find bugs in your code.
+For example, assuming one is inserting a new node at the head of a
+link, you might write code as follows:<PRE>
+head = new Node(xxx,null,head);
+// something is missing!
+</PRE>
+Here, we created a link from this node to the former ``head'' node
+(assuming it is not null), but the ``prev'' link of this new node is
+always null because it is first.  However, we are not done and we can
+tell that we are not done, because we never set the ``prev'' link of
+any existing node.  Indeed the former ``head'' node, if it exists,
+needs to point back to this new node:<PRE>
+if (head.next != null) {
+  head.next.prev = head;
+}
+</PRE>
+The ``prev'' and ``next'' links should be opposites, so that
+<!-- MATH
+ $x\texttt{.next.prev} = x\texttt{.prev.next} = x$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="264" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="linked-list-variations-img4.png"
+ ALT="\( x\texttt{.next.prev} = x\texttt{.prev.next} = x \)"></SPAN>
+unless the first link is null.  The above assignment can be need as
+effecting this equality.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Self-Test Exercises</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Is <code>head.prev.next == head</code> true after the situation just
+  described?
+</LI>
+<LI>The code given above for inserting at the head of a list doesn't
+  work if there is a ``tail'' pointer too.  Fix it!
+</LI>
+<LI>How can we append a node to the <SPAN  CLASS="textit">end</SPAN> of a list if we have
+  both head and tail pointers?  Write the code!
+</LI>
+<LI>Write the code to remove a (non-null) node <code>p</code> from a
+  doubly-linked list with head and tail pointers.  Make sure to handle
+  all four cases: that <code>p</code> is the first node, the last, both or neither.
+</LI>
+</OL>
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+Cyclic Lists</A>
+</H1>
+
+<P>
+A <SPAN  CLASS="textit">cyclic</SPAN> list is one in which the last node points back to the
+first one:
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="200" HEIGHT="49" ALIGN="BOTTOM" BORDER="0"
+ SRC="linked-list-variations-img5.png"
+ ALT="\begin{picture}(120,30)(0,-10)
+\put(0,0){\FrameBox(20,20){}}
+\put(0,10){\line(1,...
+...){110}}
+\put(-5,-2.5){\oval(15,15)[l]}
+\put(-5,5){\vector(1,0){5}}
+\end{picture}">
+<BR>
+</DIV>
+WIth a cyclic list, we don't use <code>null</code> to terminate a list.
+We also don't need a <code>head</code> field; we 
+can use the <code>tail</code> field to find the head node.
+
+<P>
+Counting the nodes (or any other task that involves looking at all the
+nodes) in a cyclic list is somewhat tricky:<PRE>
+int count = 0;
+if (tail != null) {
+  ++count;
+  for (Node p = tail.next; p != tail; p = p.next) {
+    ++count;
+  }
+}
+</PRE>
+We start at the head (<code>tail.next</code>) but as this requires a
+dereference, we first must check whether the tail is null.  If it
+isn't, then we have to count this node, since the loop will stop when
+we reach the tail node.
+
+<P>
+Inserting a node at the head of such a list is almost the same as
+inserting at the tail.  The only difference is that in the latter
+situation, we adjust the ``tail'' pointer to refer to the new node.
+
+<P>
+Using cyclic lists reduces the number of cases with null pointers,
+which makes for less complex programming for insertions and deletions.
+However, there is still the case of the empty list: inserting
+something into an empty list, or removing the last node from a list
+both involve special cases.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">
+Self-Test Exercises</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Verify the code given for computing the count for the given
+  list with three nodes.  Go through the code by hand and check that
+  it indeed only looks at two nodes.
+</LI>
+<LI>Write code to insert a new node at the end of a non-empty cyclic list
+</LI>
+<LI>Add the case that the list might be empty.
+</LI>
+<LI>Write code to remove the first node from a non-empty cyclic
+  list.  Make sure to handle the code that the result might be empty.
+</LI>
+<LI>Why is it difficult to remove the <SPAN  CLASS="textit">last</SPAN> node from a
+  singly-linked cyclic list?
+</LI>
+</OL>
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+Dummy Nodes</A>
+</H1>
+
+<P>
+Another way to reduce/remove special cases from linked lists is to use
+a <SPAN  CLASS="textit">dummy</SPAN> node, which is a node that does not hold any value, but
+is in the list to provide an extra node at the front (and/or rear) of
+the list.  So for example, a list with three ``real'' nodes 
+with an extra dummy node at the front would
+appear as follows:
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="330" HEIGHT="34" ALIGN="BOTTOM" BORDER="0"
+ SRC="linked-list-variations-img6.png"
+ ALT="\begin{picture}(160,20)(-40,0)
+\put(-75,10){\makebox(0,0){head}}
+\put(-40,10){\l...
+...ne(1,0){30}}
+\put(120,2){\line(0,1){6}}
+\put(121,2){\line(0,1){6}}
+\end{picture}">
+<BR>
+</DIV>
+The dummy node is very useful as a ``lag'' pointer when inserting or
+removing nodes.  For instance, if one wants to remove all the nodes
+whose data is 0, one can write:<PRE>
+Node lag = head;
+for (Node p = lag.next; p != null; p = p.next) {
+  if (p.data == 0) {
+    lag.next = p.next;
+  } else {
+    lag = p;
+  }
+}
+</PRE>
+Without a dummy node, this code is much more complex.
+
+<P>
+It is also possible to put a dummy at the end as well,
+but more commonly, one uses a dummy node with a cyclic list or even a
+cyclic doubly-linked list:
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="336" HEIGHT="65" ALIGN="BOTTOM" BORDER="0"
+ SRC="linked-list-variations-img7.png"
+ ALT="\begin{picture}(120,30)
+\put(-80,15){\makebox(0,0){dummy}}
+\put(-40,20){\line(2,...
+...150}}
+\put(-45,-2.5){\oval(15,15)[l]}
+\put(-45,5){\vector(1,0){5}}
+\end{picture}">
+<BR>
+</DIV>
+The head of the list can be accessed using <TT>dummy.next</TT> and the
+tail by <TT>dummy.prev</TT>.
+
+<P>
+When one has a cyclic list with a dummy node (either singly or doubly
+linked) there are never any null pointers in the data structure.  This
+cuts down the number of cases needed.
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+Self-Test Exercises</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Dummy nodes waste space.  Explain why this need not concern us.
+</LI>
+<LI>What does the empty singly-linked cyclic list with a dummy node
+  look like?  doubly-linked?
+</LI>
+<LI>In what way does a acyclic (list <SPAN  CLASS="textit">without</SPAN> a cycle) still
+  have null pointers even if it has dummy nodes at the front and rear
+  of the list?
+</LI>
+<LI>Suppose we have a singly-linked acyclic list.
+  Having a dummy node at the front reduces special cases (as shown).
+  Why does it not make sense to have a dummy node at the tail, as well?
+</LI>
+<LI>To insert a node after a given node <code>p</code> in a doubly-linked
+  cyclic list with a dummy node requires only one case.  Write the code!
+</LI>
+</OL>
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+Endogenous Linked Lists</A>
+</H1>
+
+<P>
+All the linked lists described so far and in the textbook are what we
+call <SPAN  CLASS="textit">exogenous</SPAN> linked lists, in which the links are stored
+outside of, that is separate from, the data.  We have a separate node
+structure used internal to the linked structure.
+
+<P>
+However in system programming, one frequently encounters the other
+kind of linked list, the <SPAN  CLASS="textit">endogenous</SPAN> linked list, in which the
+links are stored within the data.  In other words, the data being
+linked already have the ability to be linked together; they already
+have (say) ``prev'' and ``next'' fields.
+The advantage of such a system is that it does not require one to
+allocate new objects (the nodes) in order to connect existing objects
+together in lists.  Necessarily each piece can only be placed in one
+list.
+
+<P>
+In the kernel of an operating system (such as Windows or Linux), there
+will be task or process or thread objects.  Each object can be
+``runnable'' (in a run qeueue) or waiting in a queue for some event
+or some resource.  Removing an object from one queue and inserting
+into another doesn't require any object allocation or deallocation,
+which is good since kernel code can rarely safely do allocation or
+deallocation.
+Endogenous lists are also a good match for physical objects that (of
+course) can only be in one container at a time.
+
+<P>
+Working with endogenous lists is similar to working with exogenous
+(traditional) lists except that methods inserting or removing nodes
+take the nodes in or return them.  For example, adding a new node at
+the head is simple:<PRE>
+data.next = head;
+head = data;
+</PRE>
+
+<P>
+Endogenous lists can be singly or doubly linked, and can be cyclic or
+acyclic.  They can have dummy nodes as well, but in this case, the
+dummy nodes (often called <SPAN  CLASS="textit">sentinels</SPAN>) often must have valid data
+fields so that they can function appropriately.
+
+<P>
+
+<H2><A NAME="SECTION00051000000000000000">
+Self-Test Exercises</A>
+</H2>
+
+<P>
+
+<OL>
+<LI>Look up in a dictionary what ``endo-'' and ``exo-'' mean.
+</LI>
+<LI>What happens when a node is inserted into one endogenous list
+      and then into another without first removing it from the first?
+      Choose a particular configuration
+      (single/double, cyclic/acyclic, dummy/no dummy) and see what happens.
+</LI>
+<LI>Write code to insert a ``task'' at the end of an endogenous
+  singly-linked acyclic list without dummy nodes, but with head and
+  tail pointers.
+</LI>
+</OL>
+<P>
+
+<a href="about.html">About this document</a>
+
+<P>
+<BR><HR>
+<ADDRESS>
+John Tang Boyland
+2015-08-27
+</ADDRESS>
+</BODY>
+</HTML>
