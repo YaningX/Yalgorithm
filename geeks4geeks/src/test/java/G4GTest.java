@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class G4GTest {
 
@@ -38,5 +38,17 @@ public class G4GTest {
         System.out.println(str1 == str2);
         System.out.println(str1.equals(str2));
         System.out.println(str1 == "abc");
+    }
+
+
+    //Set可以这么操作,但是List不可以
+    @Test
+    public void testSet() {
+        Set<List<Integer>> set = new HashSet<List<Integer>>();
+        set.add(new ArrayList<Integer>());
+        for (List<Integer> list: set) {
+            list.add(1);
+        }
+        System.out.println(set);
     }
 }
