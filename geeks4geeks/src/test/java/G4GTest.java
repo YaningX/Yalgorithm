@@ -51,4 +51,11 @@ public class G4GTest {
         }
         System.out.println(set);
     }
+
+    @Test
+    public void test() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(null);
+        System.out.println(list);
+    }
 }
