@@ -58,4 +58,15 @@ public class G4GTest {
         list.add(null);
         System.out.println(list);
     }
+
+    @Test
+    public void testInteger() {
+        Integer integer = 10;
+        integer(integer);
+        System.out.println(integer);
+    }
+
+    private void integer(Integer integer) {
+        integer -= 1;
+    }
 }

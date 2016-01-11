@@ -7,6 +7,8 @@ import java.util.List;
  * Created by xuyaning on 11/1/16.
  */
 public class Leet98 {
+
+    //中序遍历之后顺序递增
     public boolean isValidBST(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         dfs(root, result);
@@ -26,4 +28,19 @@ public class Leet98 {
         list.add(node.val);
         dfs(node.right, list);
     }
+
+    public boolean isValidBST0(TreeNode root) {
+        return isValidBST(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+    }
+
+    public boolean isValidBST(TreeNode p, double min, double max){
+        if(p==null)
+            return true;
+
+        if(p.val <= min || p.val >= max)
+            return false;
+
+        return isValidBST(p.left, min, p.val) && isValidBST(p.right, p.val, max);
+    }
+
 }
