@@ -72,4 +72,12 @@ public class BTreeTest {
         System.out.println();
         System.out.println(node.getKey());
     }
+
+    @Test
+    public void testCases() {
+        System.out.println("12AVCD123....".toLowerCase());
+        System.out.println(Character.isAlphabetic('a'));
+    }
+
+
 }
