@@ -77,6 +77,7 @@ public class BTreeTest {
     public void testCases() {
         System.out.println("12AVCD123....".toLowerCase());
         System.out.println(Character.isAlphabetic('a'));
+        System.out.println(12 ^ 11);
     }
 
 
