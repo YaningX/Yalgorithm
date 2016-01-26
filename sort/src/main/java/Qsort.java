@@ -13,11 +13,9 @@
  *
  */
 public class Qsort implements Sort{
-    @Override
     public int[] sort(int[] numbers) {
-        int[] resArray = numbers.clone();
-        doRecQsort(resArray, 0, numbers.length - 1);
-        return resArray;
+        doRecQsort(numbers, 0, numbers.length - 1);
+        return numbers;
     }
 
     //The idea of dichotomy has been used int quick sort.
@@ -30,6 +28,7 @@ public class Qsort implements Sort{
     }
 
     private int partition(int[] numbers, int left, int right) {
+        //事实上numbers[low]是第一个大于numbers[right]的数, 即numbers[right]应该处于的位置.
         int low = left;
         for (int i = left; i < right; i++) {
             if (numbers[i] <= numbers[right]) {

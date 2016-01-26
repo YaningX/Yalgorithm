@@ -1,6 +1,9 @@
 import linkedlist.ListNode;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by xuyaning on 26/1/16.
  */
@@ -32,5 +35,16 @@ public class ListNodeTest {
             dummy.next = tmp;
         }
         return dummy.next;
+    }
+
+    @Test
+    public void testList() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        System.out.println(list);
+        System.out.println(list.remove(new Integer(1)));
+        System.out.println(list);
     }
 }

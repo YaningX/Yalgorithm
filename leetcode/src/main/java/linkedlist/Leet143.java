@@ -2,6 +2,10 @@ package linkedlist;
 
 /**
  * http://www.programcreek.com/2013/12/in-place-reorder-a-singly-linked-list-in-java/
+ * 比较考验基本功:
+ *          1) 求单链表的逆反;
+ *          2) 寻找单链表的中间位;
+ *          3) 合并两个单链表;
  */
 public class Leet143 {
     public static void reorderList(ListNode head) {
