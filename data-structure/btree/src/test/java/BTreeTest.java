@@ -2,8 +2,7 @@ import javafx.util.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Test for BTree.
@@ -80,5 +79,45 @@ public class BTreeTest {
         System.out.println(12 ^ 11);
     }
 
+    @Test
+    public void testMap() {
+        Set<Node> set = new HashSet<Node>();
+        Node node1 = new Node(1, 2);
+        set.add(node1);
+        Node node2 = new Node(1, 2);
+        set.add(node2);
+        System.out.println(set);
+    }
 
+    class Node {
+        int x;
+        int y;
+        Node(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if (object == this) {
+                return true;
+            }
+            if (! (object instanceof  Node)) {
+                return false;
+            }
+
+            if (this.x == ((Node) object).x && this.y == ((Node) object).y) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    @Test
+    public void testSet() {
+        Set<Integer> set = new HashSet<Integer>();
+        set.add(1);
+        System.out.println(set.contains(1));
+        System.out.println((double) 1 / 0);
+    }
 }
