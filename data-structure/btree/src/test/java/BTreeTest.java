@@ -116,8 +116,49 @@ public class BTreeTest {
     @Test
     public void testSet() {
         Set<Integer> set = new HashSet<Integer>();
-        set.add(1);
-        System.out.println(set.contains(1));
+        Integer integer1 = new Integer(1);
+
+        set.add(integer1);
+        System.out.println(set.contains(new Integer(1)));
         System.out.println((double) 1 / 0);
+        Set<Character> set1 = new HashSet<Character>();
+        set1.add(new Character('c'));
+        set1.add(new Character('c'));
+        System.out.println(set1.size());
+        System.out.println(isAnagram("aacc", "ccac"));
     }
+
+    public static boolean isAnagram(String s, String t) {
+        if (s == null || t == null) {
+            return false;
+        }
+        if (s.length() != t.length()) {
+            return false;
+        }
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            if (!map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), 1);
+            } else {
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+            }
+        }
+        Map<Character, Integer> tMap = new HashMap<Character, Integer>();
+        for (int i = 0; i < t.length(); i++) {
+            if (!map.containsKey(t.charAt(i))) {
+                return false;
+            } else {
+                if (!tMap.containsKey(t.charAt(i))) {
+                    tMap.put(t.charAt(i), 1);
+                } else {
+                    tMap.put(t.charAt(i), tMap.get(t.charAt(i)) + 1);
+                    if (tMap.get(t.charAt(i)) > map.get(t.charAt(i))) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 }
