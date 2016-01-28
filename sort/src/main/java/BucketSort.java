@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /** http://www.acmerblog.com/bucket-sort-4884.html
  * 1) Time complexity O(n)
  * 2) can be stable
@@ -13,8 +17,34 @@
  *          How do we sort the numbers efficiently?
  */
 public class BucketSort implements Sort {
-    @Override
     public int[] sort(int[] numbers) {
-        return new int[0];
+        if (numbers == null || numbers.length <= 1) {
+            return numbers;
+        }
+        int max = numbers[0];
+        int min = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            max = Math.max(max, numbers[i]);
+            min = Math.min(min, numbers[i]);
+        }
+
+        double len = (double) (max - min) / (numbers.length - 1);
+        List<Integer>[] buckets = new ArrayList[numbers.length];
+        for (int i = 0; i < buckets.length; i++) {
+            buckets[i] = new ArrayList<Integer>();
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            int index = (int) ((numbers[i] - min) / len);
+            buckets[index].add(numbers[i]);
+        }
+        int j = 0;
+        for (int i = 0; i < buckets.length; i++) {
+            Collections.sort(buckets[i]);
+            for (Integer number: buckets[i]) {
+                numbers[j++] = number;
+            }
+        }
+
+        return numbers;
     }
 }

@@ -45,6 +45,12 @@ public class SortTest {
     }
 
     @Test
+    public void bucketSort() {
+        Sort sort = new BucketSort();
+        process(sort);
+    }
+
+    @Test
     public void testSplit() {
         String s = "a b  c     dd";
         String[] strings = s.split("\\s+");

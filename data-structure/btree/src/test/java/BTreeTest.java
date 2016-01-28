@@ -166,6 +166,7 @@ public class BTreeTest {
         String[] strings = new String[3];
         System.out.println(strings[0]);
         System.out.println((0.0 / 0.0) * 0);
+        Collections.sort(new ArrayList<Integer>());
     }
 
 }

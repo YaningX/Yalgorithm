@@ -37,7 +37,7 @@ public class Leet164 {
         }
 
         double len = (double) (max - min) / (nums.length - 1);
-        Bucket[] buckets = new Bucket[(int) ((max - min) / len) + 1];
+        Bucket[] buckets = new Bucket[nums.length];
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new Bucket();
         }
