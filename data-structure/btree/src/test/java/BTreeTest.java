@@ -167,6 +167,9 @@ public class BTreeTest {
         System.out.println(strings[0]);
         System.out.println((0.0 / 0.0) * 0);
         Collections.sort(new ArrayList<Integer>());
+        System.out.println(Double.valueOf("1.3") + Double.valueOf("2.12"));
+        String string = "12345";
+        System.out.println(new StringBuilder(string).insert(1,"a").toString());
     }
 
 }
