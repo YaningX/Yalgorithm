@@ -161,4 +161,11 @@ public class BTreeTest {
         return true;
     }
 
+    @Test
+    public void testStr() {
+        String[] strings = new String[3];
+        System.out.println(strings[0]);
+        System.out.println((0.0 / 0.0) * 0);
+    }
+
 }

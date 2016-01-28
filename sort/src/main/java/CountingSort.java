@@ -6,9 +6,7 @@
  * Time complexity O(n + k). n is the input size & k is the input range.
  */
 public class CountingSort implements Sort {
-    @Override
     public int[] sort(int[] array) {
-        array = array.clone();
         int[] resArray = new int[array.length];
         int min = array[0], max = array[0];
         for (int x : array) {
