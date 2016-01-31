@@ -1,3 +1,5 @@
+import btree.InOrder;
+import btree.PostOrder;
 import btree.PreOrder;
 import btree.TreeNode;
 import org.junit.Test;
@@ -29,39 +31,17 @@ public class BTreeTest {
         System.out.println(result);
     }
 
-    class Status {
-        int num;
-        int stage;
-        public Status(int num, int stage) {
-            this.num = num;
-            this.stage = stage;
-        }
-    }
-    private void add(int num, List<Integer> result) {
-        Status status = new Status(0, 0);
-        Stack<Status> statusStack = new Stack<Status>();
-        statusStack.push(status);
-        while (!statusStack.isEmpty()) {
-            Status status1 = statusStack.pop();
-            if (status1.num == 10) {
-                continue;
-            }
-            switch (status1.stage) {
-                case 0: {
-                    result.add(status1.num);
-                    statusStack.push(new Status(status1.num + 1, 0));
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
+    @Test
+    public void inOrder() {
+        TreeNode root = buildBTree();
+        List<Integer> result = InOrder.inOrder(root);
+        System.out.println(result);
     }
 
     @Test
-    public void testAdd() {
-        List<Integer> result = new ArrayList<Integer>();
-        add(0, result);
+    public void postOrder() {
+        TreeNode root = buildBTree();
+        List<Integer> result = PostOrder.postOrder(root);
         System.out.println(result);
     }
 

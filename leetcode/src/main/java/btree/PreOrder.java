@@ -19,24 +19,26 @@ public class PreOrder {
 
     public List<Integer> preOrder(TreeNode root) {
         List<Integer> result = new LinkedList<Integer>();
-        Stack<Snapshot> snapshotStack = new Stack<Snapshot>();
-        Snapshot snapshot = new Snapshot(root, 0);
-        snapshotStack.push(snapshot);
-        while (!snapshotStack.isEmpty()) {
-            Snapshot snap = snapshotStack.pop();
-            if (snap.root == null) {
-                continue;
-            }
-            switch (snap.stage) {
-                case 0:
-                    result.add(snap.root.val);
-                    snapshotStack.push(new Snapshot(snap.root.left, 1));
+        Stack<Snapshot> stack = new Stack<Snapshot>();
+        stack.push(new Snapshot(root, 0));
+        while (!stack.isEmpty()) {
+            Snapshot snapshot = stack.pop();
+            switch (snapshot.stage) {
+                case 0: {
+                    if (snapshot.root == null) {
+                        continue;
+                    }
+                    result.add(snapshot.root.val);
+                    snapshot.stage = 1;
+                    stack.push(snapshot);
+                    stack.push(new Snapshot(snapshot.root.left, 0));
                     break;
-                case 1:
-                    snapshotStack.push(new Snapshot(snap.root.right, 0));
+                }
+                case 1: {
+                    snapshot.stage = 0;
+                    stack.push(new Snapshot(snapshot.root.right, 0));
                     break;
-                default:
-                    break;
+                }
             }
         }
         return result;
@@ -50,6 +52,7 @@ public class PreOrder {
         dfs(root.left, result);
         dfs(root.right, result);
     }
+
     public List<Integer> preOrderRec(TreeNode root) {
         List<Integer> result = new LinkedList<Integer>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
