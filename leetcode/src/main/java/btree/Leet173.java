@@ -53,4 +53,5 @@ public class Leet173 {
         public int next() {
             return this.next;
         }
+    }
 }

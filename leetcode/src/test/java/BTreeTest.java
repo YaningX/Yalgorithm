@@ -50,4 +50,14 @@ public class BTreeTest {
         System.out.println(FibNum.fibnumLoop(15));
         System.out.println(FibNum.fibnum(15));
     }
+
+    @Test
+    public void testArray() {
+        int[][] array = {
+                {1, 2, 3},
+                {2, 3, 4}
+        };
+        System.out.println(array.length);
+        System.out.println(array[0].length);
+    }
 }
