@@ -18,4 +18,12 @@ public class ExpTest {
         Arrays.sort(array, new MyComparator());
         System.out.println(Arrays.toString(array));
     }
+
+    @Test
+    public void testBitShift() {
+        int x = 10;
+        x <<= 1;
+        System.out.println(x);
+        System.out.println(1 << 31);
+    }
 }
