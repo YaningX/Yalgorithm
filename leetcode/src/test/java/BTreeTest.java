@@ -5,9 +5,7 @@ import btree.TreeNode;
 import org.junit.Test;
 import recursive.FibNum;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by xuyaning on 31/1/16.
@@ -59,5 +57,17 @@ public class BTreeTest {
         };
         System.out.println(array.length);
         System.out.println(array[0].length);
+    }
+
+    @Test
+    public void testSetArray() {
+        Set<Integer>[] sets = new Set[2];
+        sets[0] = new HashSet<Integer>();
+        sets[1] = new HashSet<Integer>();
+        sets[0].add(1);
+        sets[0].add(2);
+        sets[1].add(3);
+        sets[1].add(5);
+        System.out.println(sets[0]);
     }
 }
