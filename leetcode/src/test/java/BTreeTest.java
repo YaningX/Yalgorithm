@@ -70,4 +70,21 @@ public class BTreeTest {
         sets[1].add(5);
         System.out.println(sets[0]);
     }
+
+    @Test
+    public void testStackClone() {
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(1);
+        stack.push(2);
+        Stack<Integer> tmpStack = (Stack<Integer>) stack.clone();
+        System.out.println(tmpStack);
+    }
+
+    @Test
+    public void testString() {
+        String str = "1235678";
+        StringBuilder sb = new StringBuilder(str);
+        sb.reverse();
+        System.out.println(sb.toString());
+    }
 }
