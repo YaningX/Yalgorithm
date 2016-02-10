@@ -170,6 +170,8 @@ public class BTreeTest {
         System.out.println(Double.valueOf("1.3") + Double.valueOf("2.12"));
         String string = "12345";
         System.out.println(new StringBuilder(string).insert(1,"a").toString());
+        int x = 1;
+        System.out.println(2 << 0);
     }
 
 }
