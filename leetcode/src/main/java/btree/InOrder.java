@@ -43,5 +43,21 @@ public class InOrder {
         return result;
     }
 
+    public List<Integer> inorder(TreeNode root) {
+        List<Integer> result = new LinkedList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode p = root;
+        while (!stack.isEmpty() || p != null) {
+            if (p != null) {
+                stack.push(p);
+                p = p.left;
+            } else {
+                TreeNode node = stack.pop();
+                result.add(node.val);
+                p = node.right;
+            }
+        }
+        return result;
+    }
 
 }
