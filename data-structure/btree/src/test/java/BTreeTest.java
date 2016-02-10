@@ -174,4 +174,26 @@ public class BTreeTest {
         System.out.println(2 << 0);
     }
 
+    @Test
+    public void testLinkedList() {
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+        linkedList.push(1);
+        linkedList.push(2);
+        linkedList.push(3);
+        System.out.println(linkedList);
+        System.out.println(linkedList.poll());
+        System.out.println(linkedList);
+    }
+
+    @Test
+    public void testReverseStack() {
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        System.out.println(stack);
+        Collections.reverse(stack);
+        System.out.println(stack);
+        System.out.println(stack.pop());
+    }
 }
