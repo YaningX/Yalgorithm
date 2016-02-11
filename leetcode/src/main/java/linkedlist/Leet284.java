@@ -34,7 +34,7 @@ public class Leet284 {
             val = null;
             return value;
         }
-        
+
         public boolean hasNext() {
             return val != null || iterator.hasNext();
         }
