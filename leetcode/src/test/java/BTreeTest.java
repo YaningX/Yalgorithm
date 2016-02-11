@@ -90,4 +90,10 @@ public class BTreeTest {
         System.out.println(3 ^ (-3));
         System.out.println((5 & 1) == 1);
     }
+
+    @Test
+    public void testAssign() {
+        int x = 1, y = 1;// x = y = 1非法
+        System.out.println();
+    }
 }
