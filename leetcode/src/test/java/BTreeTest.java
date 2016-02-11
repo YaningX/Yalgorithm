@@ -86,5 +86,6 @@ public class BTreeTest {
         StringBuilder sb = new StringBuilder(str);
         sb.reverse();
         System.out.println(sb.toString());
+        int[] a = new int[0];
     }
 }
