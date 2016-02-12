@@ -172,6 +172,8 @@ public class BTreeTest {
         System.out.println(new StringBuilder(string).insert(1,"a").toString());
         int x = 1;
         System.out.println(2 << 0);
+
+        System.out.println("ab cd ef ad".split(" ").length);
     }
 
     @Test
