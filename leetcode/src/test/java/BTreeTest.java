@@ -95,5 +95,17 @@ public class BTreeTest {
     public void testAssign() {
         int x = 1, y = 1;// x = y = 1非法
         System.out.println();
+        List<Integer> list = new LinkedList<Integer>();
+        for (int i: list) {
+
+        }
+    }
+
+    @Test
+    public void testCharacter() {
+        String string = "abcdef";
+        Character character = new Character('a');
+        Character ch = new Character('a');
+        System.out.println(character == string.charAt(0));
     }
 }
