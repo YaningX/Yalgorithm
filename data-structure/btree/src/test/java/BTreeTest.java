@@ -198,4 +198,20 @@ public class BTreeTest {
         System.out.println(stack);
         System.out.println(stack.pop());
     }
+
+    @Test
+    public void testPriorityQueue() {
+        Queue<Integer> queue = new PriorityQueue<Integer>();
+        queue.offer(1);
+        queue.offer(-3);
+        queue.offer(5);
+        System.out.println(queue);
+        //queue.poll();
+        System.out.println(queue.peek());
+        System.out.println(getDouble());
+    }
+
+    private double getDouble() {
+        return 3;
+    }
 }
