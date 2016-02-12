@@ -209,6 +209,13 @@ public class BTreeTest {
         //queue.poll();
         System.out.println(queue.peek());
         System.out.println(getDouble());
+        int[] a = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(a));
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        System.out.println(list.toString());
     }
 
     private double getDouble() {
