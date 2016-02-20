@@ -22,7 +22,7 @@ public class Leet30 {
     public static List<Integer> findSubstring(String s, String[] words) {
         List<Integer> result = new LinkedList<Integer>();
 
-        if (s == null || s.isEmpty() || words == null || words.length == 0) {
+        if (s.isEmpty() || words.length == 0) {
             return result;
         }
 

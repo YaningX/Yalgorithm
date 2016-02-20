@@ -75,12 +75,10 @@ public class Leet33 {
                     left = mid + 1;
                 }
             } else {
-                if (A[mid] < A[right]) {
-                    if (A[mid] < target && target <= A[right]) {
-                        left = mid + 1;
-                    } else {
-                        right = mid - 1;
-                    }
+                if (A[mid] < target && target <= A[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
                 }
             }
         }

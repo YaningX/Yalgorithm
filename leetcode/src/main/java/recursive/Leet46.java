@@ -10,7 +10,7 @@ import java.util.List;
 public class Leet46 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new LinkedList<List<Integer>>();
-        if (nums == null || nums.length == 0) {
+        if (nums.length == 0) {
             return result;
         }
         List<Integer> list = new ArrayList<Integer>();
@@ -40,5 +40,37 @@ public class Leet46 {
             }
         }
         return result;
+    }
+
+
+
+
+    // another effective solution
+    public List<List<Integer>> permute0(int[] nums) {
+        List<List<Integer>> result = new LinkedList<List<Integer>>();
+        if (nums.length == 0) {
+            return result;
+        }
+        List<Integer> rootList = new ArrayList<Integer>();
+        for (int num: nums) {
+            rootList.add(num);
+        }
+        dfs(rootList, 0, result);
+        return result;
+    }
+
+    private void dfs(List<Integer> rootList, int index, List<List<Integer>> result) {
+        if (index == rootList.size()) {
+            result.add(new ArrayList<Integer>(rootList));
+            return;
+        }
+        for (int i = index; i < rootList.size(); i++) {
+            int tmp = rootList.get(index);
+            rootList.set(index, rootList.get(i));
+            rootList.set(i, tmp);
+            dfs(rootList, index + 1, result);
+            rootList.set(i, rootList.get(index));
+            rootList.set(index, tmp);
+        }
     }
 }

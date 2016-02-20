@@ -15,25 +15,26 @@ Key idea: binary search
  */
 public class Leet34 {
     public int[] searchRange(int[] nums, int target) {
+        int[] result = {-1, -1};
+        if (nums.length == 0) {
+            return result;
+        }
         int left = 0;
         int right = nums.length - 1;
-        int result[] = {-1, -1};
         while (left <= right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
-                int low = mid;
-                int high = mid;
-                while (low >= 0 && nums[low] == target) {
-                    low--;
+                int i = mid;
+                while (i >= 0 && nums[i] == target) {
+                    result[0] = i;
+                    i--;
                 }
-                low++;
-                while (high <= nums.length - 1 && nums[high] == target) {
-                    high++;
+                i = mid;
+                while (i < nums.length && nums[i] == target) {
+                    result[1] = i;
+                    i++;
                 }
-                high--;
-                result[0] = low;
-                result[1] = high;
-                break;
+                return result;
             } else if (nums[mid] > target) {
                 right = mid - 1;
             } else {
