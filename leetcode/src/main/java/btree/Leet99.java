@@ -13,6 +13,7 @@ public class Leet99 {
         p.right.val = tmp;
     }
 
+    //中序遍历.
     private void dfs(TreeNode root, TreeNode pre, TreeNode p) {
         if (root == null) {
             return;

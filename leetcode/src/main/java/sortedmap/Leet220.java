@@ -8,7 +8,7 @@ import java.util.TreeSet;
  */
 public class Leet220 {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        if (k < 1 || t < 0 || nums == null || nums.length < 2) {
+        if (k < 1 || t < 0 || nums.length < 2) {
             return false;
         }
         SortedSet<Long> set = new TreeSet<Long>();

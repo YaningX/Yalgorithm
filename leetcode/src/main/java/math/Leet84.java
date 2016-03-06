@@ -7,10 +7,6 @@ import java.util.Stack;
  */
 public class Leet84 {
     public int largestRectangleArea(int[] height) {
-        if (height == null || height.length == 0) {
-            return 0;
-        }
-
         int max = 0;
         Stack<Integer> stack = new Stack<Integer>();
         int i = 0;
@@ -21,7 +17,7 @@ public class Leet84 {
             } else {
                 int p = stack.pop();
                 int h = height[p];
-                int w = stack.isEmpty()? i: i - stack.peek() - 1;
+                int w = stack.isEmpty()? i: i - 1 - stack.peek();//栈里面所有的元素值都小于等于height[i - 1]
                 max = Math.max(h * w, max);
             }
         }
@@ -29,7 +25,7 @@ public class Leet84 {
         while (!stack.isEmpty()) {
             int p = stack.pop();
             int h = height[p];
-            int w = stack.isEmpty()? i: i - stack.peek() - 1;
+            int w = stack.isEmpty()? i: i - 1 - stack.peek();
             max = Math.max(h * w, max);
         }
         return max;

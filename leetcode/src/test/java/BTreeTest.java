@@ -108,4 +108,13 @@ public class BTreeTest {
         Character ch = new Character('a');
         System.out.println(character == string.charAt(0));
     }
+
+    @Test
+    public void testHashSet() {
+        TreeNode node1 = new TreeNode(1);
+        Set<TreeNode> set = new HashSet<TreeNode>();
+        set.add(node1);
+        TreeNode node2 = new TreeNode(1);
+        System.out.println(node1.equals(node2));
+    }
 }

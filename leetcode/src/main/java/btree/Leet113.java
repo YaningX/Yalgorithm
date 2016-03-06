@@ -10,32 +10,28 @@ import java.util.Stack;
 public class Leet113 {
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if (root == null) {
-            return result;
+        if (root != null) {
+            dfs(root, sum, new ArrayList<Integer>(), result);
         }
-        Stack<Integer> path = new Stack<Integer>();
-        dfs(root, sum, 0, result, path);
         return result;
     }
 
-    private void dfs(TreeNode root, int sum, int addSum, List<List<Integer>> result, Stack<Integer> path) {
+    private void dfs(TreeNode root, int sum, List<Integer> current, List<List<Integer>> result) {
         if (root.left == null && root.right == null) {
-            if (addSum + root.val == sum) {
-                path.push(root.val);
-                result.add(new ArrayList<Integer>(path));
-                path.pop();
-                return;
+            if (root.val == sum) {
+                List<Integer> list = new ArrayList<Integer>(current);
+                list.add(root.val);
+                result.add(list);
             }
+            return;
         }
-
-        path.push(root.val);
+        current.add(root.val);
         if (root.left != null) {
-            dfs(root.left, sum, addSum + root.val, result, path);
+            dfs(root.left, sum - root.val, current, result);
         }
-
         if (root.right != null) {
-            dfs(root.right, sum, addSum + root.val, result, path);
+            dfs(root.right, sum -root.val, current, result);
         }
-        path.pop();
+        current.remove(current.size() - 1);
     }
 }

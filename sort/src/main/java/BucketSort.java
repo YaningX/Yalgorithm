@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class BucketSort implements Sort {
     public int[] sort(int[] numbers) {
-        if (numbers == null || numbers.length <= 1) {
+        if (numbers.length <= 1) {
             return numbers;
         }
         int max = numbers[0];

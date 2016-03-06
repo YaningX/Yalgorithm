@@ -7,31 +7,27 @@ import linkedlist.ListNode;
  */
 public class Leet109 {
     public TreeNode sortedListToBST(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        int len = 0;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
         ListNode p = head;
+        int len = 0;
         while (p != null) {
             p = p.next;
             len++;
         }
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
         return dfs(dummy, 0, len - 1);
     }
 
-    private TreeNode dfs(ListNode dummy, int start, int end) {
+    private TreeNode dfs(ListNode pre, int start, int end) {
         if (start > end) {
             return null;
         }
-
         int mid = start + (end - start) / 2;
-        TreeNode left = dfs(dummy, start, mid - 1);
-        TreeNode parent = new TreeNode(dummy.next.val);
-        parent.left = left;
-        dummy.next = dummy.next.next;
-        parent.right = dfs(dummy, mid + 1, end);
-        return parent;
+        TreeNode left = dfs(pre, start, mid - 1);
+        TreeNode root = new TreeNode(pre.next.val);
+        root.left = left;
+        pre.next = pre.next.next;
+        root.right = dfs(pre, mid + 1, end);
+        return root;
     }
 }

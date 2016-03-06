@@ -10,7 +10,7 @@ public class Leet54 {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> result = new ArrayList<Integer>();
 
-        if (matrix == null || matrix.length == 0) {
+        if (matrix.length == 0) {
             return result;
         }
 

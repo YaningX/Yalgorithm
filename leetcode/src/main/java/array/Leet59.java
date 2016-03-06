@@ -5,43 +5,34 @@ package array;
  */
 public class Leet59 {
     public int[][] generateMatrix(int n) {
-        n = Math.abs(n);
         int[][] result = new int[n][n];
-        int x = 0;
-        int y = 0;
-        int limit = n;
-        int value = 1;
-
-        while (limit > 0) {
-            if (limit == 1) {
-                result[x][y] = value;
-                return result;
+        if (n == 0) {
+            return result;
+        }
+        int x = 0, y = 0;
+        int count = 1;
+        while (n > 0) {
+            if (n == 1) {
+                result[x][y] = count;
+                break;
             }
 
-            //top---to right
-            for (int i = 0; i < limit - 1; i++) {
-                result[x][y++] = value++;
+            for (int i = 0; i < n - 1; i++) {
+                result[x][y++] = count++;
             }
 
-            //right---to down
-            for (int i = 0; i < limit - 1; i++) {
-                result[x++][y] = value++;
+            for (int i = 0; i < n - 1; i++) {
+                result[x++][y] = count++;
             }
-
-            //bottom---to left
-            for (int i = 0; i < limit - 1; i++) {
-                result[x][y--] = value++;
+            for (int i = 0; i < n - 1; i++) {
+                result[x][y--] = count++;
             }
-
-            //left---to up
-            for (int i = 0; i < limit - 1; i++) {
-                result[x--][y] = value++;
+            for (int i = 0; i < n - 1; i++) {
+                result[x--][y] = count++;
             }
-
-
-            limit -= 2;
             x++;
             y++;
+            n -= 2;
         }
         return result;
     }

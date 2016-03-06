@@ -5,7 +5,7 @@ package greedy;
  */
 public class Leet135 {
     public int candy(int[] ratings) {
-        if (ratings == null || ratings.length == 0) {
+        if (ratings.length == 0) {
             return 0;
         }
         int[] candies1 = new int[ratings.length];

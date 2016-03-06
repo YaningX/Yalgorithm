@@ -5,28 +5,26 @@ package string;
  */
 public class Leet125 {
     public boolean isPalindrome(String s) {
-        if (s == null || s.length() == 0) {
-            return true;
-        }
         s = s.toLowerCase();
         int left = 0;
         int right = s.length() - 1;
         while (left < right) {
-            char leftChar = s.charAt(left);
-            char rightChar = s.charAt(right);
-            if (!Character.isAlphabetic(leftChar) && !Character.isDigit(leftChar)) {
+            char lch = s.charAt(left);
+            char rch = s.charAt(right);
+            if (!Character.isDigit(lch) && !Character.isAlphabetic(lch)) {
                 left++;
                 continue;
             }
-            if (!Character.isAlphabetic(rightChar) && !Character.isDigit(rightChar)) {
+            if (!Character.isDigit(rch) && !Character.isAlphabetic(rch)) {
                 right--;
                 continue;
             }
-            if (leftChar != rightChar) {
+            if (lch == rch) {
+                left++;
+                right--;
+            } else {
                 return false;
             }
-            left++;
-            right--;
         }
         return true;
     }

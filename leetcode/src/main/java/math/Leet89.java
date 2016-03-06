@@ -14,20 +14,19 @@ public class Leet89 {
             return result;
         }
         result.add(1);
-        doGrayCode(result, 1, n);
+        dfs(n, result, 1);
         return result;
     }
 
-    private void doGrayCode(List<Integer> result, int index, int n) {
+    private void dfs(int n, List<Integer> result, int index) {
         if (index == n) {
             return;
         }
-
-        int addition = result.size();
-        for (int i = addition - 1; i >= 0; i--) {
-            result.add(result.get(i) + addition);
+        int size = result.size();
+        for (int i = size - 1; i >= 0; i--) {
+            result.add(result.get(i) + size);
         }
-        doGrayCode(result, index + 1, n);
+        dfs(n, result, index + 1);
     }
     /**
      n = 5:

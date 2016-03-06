@@ -7,26 +7,30 @@ import java.util.*;
  */
 public class Leet56 {
     public List<Interval> merge(List<Interval> intervals) {
-        List<Interval> result = new LinkedList<Interval>();
-        if (intervals == null || intervals.size() == 0) {
+        List<Interval> result = new ArrayList<Interval>();
+        if (intervals.size() == 0) {
             return result;
         }
         Collections.sort(intervals, new IntervalComparator());
-        Iterator<Interval> iterator = intervals.iterator();
-        Stack<Interval> stack = new Stack<Interval>();
-        stack.push(iterator.next());
-        while (iterator.hasNext()) {
-            Interval preInterval = stack.pop();
-            Interval interval = iterator.next();
-            if (preInterval.end >= interval.start) {
-                stack.push(new Interval(preInterval.start, Math.max(preInterval.end, interval.end)));
+        for (Interval interval: intervals) {
+            if (result.size() == 0) {
+                result.add(new Interval(interval.start, interval.end));
                 continue;
             }
-            stack.push(preInterval);
-            stack.push(interval);
+            Interval pre = result.get(result.size() - 1);
+            if (pre.end < interval.start) {
+                result.add(new Interval(interval.start, interval.end));
+            } else {
+                pre.end = Math.max(pre.end, interval.end);
+            }
         }
-        result.addAll(stack);
         return result;
+    }
+
+    class IntervalComparator implements Comparator<Interval> {
+        public int compare(Interval val1, Interval val2) {
+            return val1.start - val2.start;
+        }
     }
 
     class Interval {
@@ -41,12 +45,6 @@ public class Leet56 {
         Interval( int start, int end) {
             this.start = start;
             this.end = end;
-        }
-    }
-
-    class IntervalComparator implements Comparator<Interval> {
-        public int compare(Interval interval1, Interval interval2) {
-            return interval1.start - interval2.start;
         }
     }
 }

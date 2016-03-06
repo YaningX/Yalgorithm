@@ -34,4 +34,27 @@ public class Leet118 {
         last.add(tmp);
         return last;
     }
+
+
+    //////////////////////////////////
+    public List<List<Integer>> generate0(int numRows) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (numRows == 0) {
+            return result;
+        }
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        result.add(list);
+        for (int i = 2; i <= numRows; i++) {
+            List<Integer> preList = result.get(result.size() - 1);
+            List<Integer> tmpList = new ArrayList<Integer>();
+            tmpList.add(1);
+            for (int j = 0; j < preList.size() - 1; j++) {
+                tmpList.add(preList.get(j) + preList.get(j + 1));
+            }
+            tmpList.add(1);
+            result.add(tmpList);
+        }
+        return result;
+    }
 }

@@ -22,7 +22,6 @@ public class Leet95 {
             result.add(null);
             return result;
         }
-
         for (int i = start; i <= end; i++) {
             List<TreeNode> lefts = generateTrees(start, i - 1);
             List<TreeNode> rights = generateTrees(i + 1, end);

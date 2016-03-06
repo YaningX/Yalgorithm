@@ -7,22 +7,20 @@ import java.util.*;
  */
 public class Leet49 {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result = new ArrayList<List<String>>();
-        if (strs == null || strs.length == 0) {
-            return result;
+        if (strs.length == 0) {
+            return new ArrayList<List<String>>();
         }
         Map<String, List<String>> map = new HashMap<String, List<String>>();
         Arrays.sort(strs);
-        for (int i = 0; i < strs.length; i++) {
-            char[] chars = strs[i].toCharArray();
+        for (String str: strs) {
+            char[] chars = str.toCharArray();
             Arrays.sort(chars);
-            String key = new String(chars);
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<String>());
+            String s = new String(chars);
+            if (!map.containsKey(s)) {
+                map.put(s, new ArrayList<String>());
             }
-            map.get(key).add(strs[i]);
+            map.get(s).add(str);
         }
-        result = new ArrayList<List<String>>(map.values());
-        return result;
+        return new ArrayList<List<String>>(map.values());
     }
 }

@@ -12,7 +12,7 @@ public class Leet116 {
     }
 
     private void dfs(TreeLinkNode root) {
-        if (root.left == null) {
+        if (root.left == null && root.right == null) {
             return;
         }
         root.left.next = root.right;

@@ -9,33 +9,20 @@ import java.util.List;
 public class Leet102 {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        dfs(root, result, 0);
+        dfs(result, root, 0);
         return result;
     }
 
-    private void dfs(TreeNode node, List<List<Integer>> result, int level) {
-        if (node == null) {
+    private void dfs(List<List<Integer>> result, TreeNode root, int level) {
+        if (root == null) {
             return;
         }
-
-        if (result.size() <= level) {
+        if (result.size() == level) {
             List<Integer> list = new ArrayList<Integer>();
-            list.add(node.val);
             result.add(list);
-        } else {
-            List<Integer> list = result.get(level);
-            list.add(node.val);
         }
-        dfs(node.left, result, level + 1);
-        dfs(node.right, result, level + 1);
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
+        result.get(level).add(root.val);
+        dfs(result, root.left, level + 1);
+        dfs(result, root.right, level + 1);
     }
 }

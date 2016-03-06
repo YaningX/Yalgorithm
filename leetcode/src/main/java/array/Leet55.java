@@ -5,20 +5,17 @@ package array;
  */
 public class Leet55 {
     public boolean canJump(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums.length <= 1) {
             return true;
         }
-
-        int maxReach = nums[0];
-        int index = 0;
-        while (index <= maxReach) {
-            if (index + nums[index] > maxReach) {
-                maxReach = index + nums[index];
-            }
-            index++;
-            if (maxReach >= nums.length - 1) {
+        int max = nums[0];
+        int i = 1;
+        while (max >= i && i < nums.length) {
+            max = Math.max(max, nums[i] + i);
+            if (max >= nums.length - 1) {
                 return true;
             }
+            i++;
         }
         return false;
     }

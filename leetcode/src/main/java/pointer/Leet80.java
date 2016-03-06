@@ -50,4 +50,16 @@ public class Leet80 {
         }
         return low;
     }
+
+    //use two pointers
+    public int removeDuplicates0(int[] nums) {
+        int low = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (low - 2 >= 0 && nums[i] == nums[low - 2]) {
+                continue;
+            }
+            nums[low++] = nums[i];
+        }
+        return low;
+    }
 }

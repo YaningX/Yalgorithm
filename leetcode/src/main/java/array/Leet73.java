@@ -8,28 +8,54 @@ import java.util.Set;
  */
 public class Leet73 {
     public void setZeroes(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
+        if (matrix.length == 0 || matrix[0].length == 0) {
             return;
         }
-        Set<Integer> set = new HashSet<Integer>();
-        boolean flag = false;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
+        boolean firstRow = false;
+        boolean firstCol = false;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        for (int i = 0; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                firstCol = true;
+                break;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (matrix[0][i] == 0) {
+                firstRow = true;
+            }
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (matrix[i][j] == 0) {
-                    set.add(j);
-                    flag = true;
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
                 }
             }
-            if (flag == true) {
-                for (int j = 0; j < matrix[0].length; j++) {
+        }
+        for (int i = 1; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                for (int j = 1; j < n; j++) {
                     matrix[i][j] = 0;
                 }
             }
-            flag = false;
         }
-        for (Integer index: set) {
-            for (int i = 0; i < matrix.length; i++) {
-                matrix[i][index] =  0;
+        for (int j = 1; j < n; j++) {
+            if (matrix[0][j] == 0) {
+                for (int i = 1; i < m; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        if (firstRow) {
+            for (int i = 0; i < n; i++) {
+                matrix[0][i] = 0;
+            }
+        }
+        if (firstCol) {
+            for (int j = 0; j < m; j++) {
+                matrix[j][0] = 0;
             }
         }
     }

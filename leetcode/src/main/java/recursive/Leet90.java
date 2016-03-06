@@ -30,14 +30,11 @@ public class Leet90 {
      */
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if (nums == null || nums.length == 0) {
-            return result;
-        }
         Arrays.sort(nums);
         result.add(new ArrayList<Integer>());
         int start = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (i != 0 && nums[i] != nums[i - 1]) {
+            if (i > 0 && nums[i] != nums[i - 1]) {
                 start = 0;
             }
             int size = result.size();

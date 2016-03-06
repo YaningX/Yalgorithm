@@ -15,10 +15,10 @@ public class Leet145 {
         }
         Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(root);
-        Stack<Integer> reStack = new Stack<Integer>();
+        List<Integer> list = new ArrayList<Integer>();
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            reStack.push(node.val);
+            list.add(0, node.val);
             if (node.left != null) {
                 stack.push(node.left);
             }
@@ -26,9 +26,6 @@ public class Leet145 {
                 stack.push(node.right);
             }
         }
-        while (!reStack.isEmpty()) {
-            result.add(reStack.pop());
-        }
-        return result;
+        return list;
     }
 }

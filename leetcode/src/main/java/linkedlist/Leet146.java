@@ -63,7 +63,7 @@ public class Leet146 {
 
             head = n;
 
-            if(end ==null)
+            if(end == null)
                 end = head;
         }
 

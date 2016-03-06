@@ -8,26 +8,20 @@ public class Leet111 {
         if (root == null) {
             return 0;
         }
-        return dfs(root, 1, -1);
+        return dfs(root);
     }
 
-    //return minimum depth
-    private int dfs(TreeNode root, int depth, int minDepth) {
+    private int dfs(TreeNode root) {
         if (root.left == null && root.right == null) {
-            if (minDepth == -1) {
-                return depth;
-            }
-            return Math.min(depth, minDepth);
+            return 1;
         }
-
-        int leftMinDepth = Integer.MAX_VALUE;
+        int result = Integer.MAX_VALUE;
         if (root.left != null) {
-            leftMinDepth = dfs(root.left, depth + 1, minDepth);
+            result = Math.min(result, dfs(root.left));
         }
-        int rightMinDepth = Integer.MAX_VALUE;
         if (root.right != null) {
-            rightMinDepth = dfs(root.right, depth + 1, minDepth);
+            result = Math.min(result, dfs(root.right));
         }
-        return Math.min(leftMinDepth, rightMinDepth);
+        return result + 1;
     }
 }

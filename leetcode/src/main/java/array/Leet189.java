@@ -6,7 +6,7 @@ package array;
 public class Leet189 {
     public void rotate(int[] nums, int k) {
         k = k % nums.length;
-        if (nums == null || nums.length < 2 || k == 0) {
+        if (nums.length < 2 || k == 0) {
             return;
         }
         reverse(nums, 0, nums.length - 1);

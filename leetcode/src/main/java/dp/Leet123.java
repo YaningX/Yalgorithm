@@ -5,7 +5,7 @@ package dp;
  */
 public class Leet123 {
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length < 2) {
+        if (prices.length < 2) {
             return 0;
         }
         int[] dp1 = new int[prices.length];

@@ -37,4 +37,20 @@ public class Leet114 {
         root.left = null; // important!
         return rightLastNode;
     }
+
+    public void flatten0(TreeNode root) {
+        TreeNode node = root;
+        while (node != null) {
+            if (node.left != null) {
+                TreeNode p = node.left;
+                while (p.right != null) {
+                    p = p.right;
+                }
+                p.right = node.right;
+                node.right = node.left;
+                node.left = null;
+            }
+            node = node.right;
+        }
+    }
 }

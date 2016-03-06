@@ -5,7 +5,7 @@ package dp;
  */
 public class Leet152 {
     public int maxProduct(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums.length == 0) {
             return 0;
         }
         int max = nums[0];

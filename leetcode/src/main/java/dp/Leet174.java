@@ -5,7 +5,7 @@ package dp;
  */
 public class Leet174 {
     public int calculateMinimumHP(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0) {
+        if (dungeon.length == 0) {
             return 1;
         }
         int m = dungeon.length;

@@ -12,14 +12,8 @@ public class Leet117 {
     }
 
     private void dfs(TreeLinkNode root) {
-        if (root.left == null && root.right == null) {
-            return;
-        }
-
         if (root.right != null) {
-            if (root.next != null) {
-                root.right.next = next(root.next);
-            }
+            root.right.next = getNext(root.next);
             dfs(root.right);
         }
 
@@ -27,25 +21,22 @@ public class Leet117 {
             if (root.right != null) {
                 root.left.next = root.right;
             } else {
-                root.left.next = next(root.next);
+                root.left.next = getNext(root.next);
             }
             dfs(root.left);
         }
     }
 
-    private TreeLinkNode next(TreeLinkNode next) {
+    private TreeLinkNode getNext(TreeLinkNode next) {
         if (next == null) {
-            return null;
+            return next;
         }
-
         if (next.left != null) {
             return next.left;
         }
-
         if (next.right != null) {
             return next.right;
         }
-
-        return next(next.next);
+        return getNext(next.next);
     }
 }

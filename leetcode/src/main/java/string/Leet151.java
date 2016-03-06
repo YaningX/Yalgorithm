@@ -7,25 +7,16 @@ import java.util.Stack;
  */
 public class Leet151 {
     public String reverseWords(String s) {
-        if(s.length() == 0) {
-            return s;
-        }
         s = s.trim();
-        String[] strings = s.split("\\s+");
-        Stack<String> stack = new Stack<String>();
-        for (int i = 0; i < strings.length; i++) {
-            stack.push(strings[i]);
-        }
-        if (stack.isEmpty()) {
+        if (s.length() == 0) {
             return "";
         }
-        StringBuilder sb = new StringBuilder();
-        sb.append(stack.pop());
-        while (!stack.isEmpty()) {
-            sb.append(" ");
-            sb.append(stack.pop());
+        String[] strs = s.split("\\s+");
+        String result = strs[strs.length - 1];
+        for (int i = strs.length - 2; i >= 0; i--) {
+            result = result + " " + strs[i];
         }
-        return sb.toString();
+        return result;
     }
 
     public String recReverseWords(String s) {

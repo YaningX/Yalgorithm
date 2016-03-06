@@ -7,24 +7,17 @@ public class Leet142 {
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
-        while (fast != null) {
-            fast = fast.next;
-            if (fast == null) {
-                return null;
-            }
-            fast = fast.next;
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
             slow = slow.next;
             if (fast == slow) {
-                break;
+                while (head != slow) {
+                    head = head.next;
+                    slow = slow.next;
+                }
+                return head;
             }
         }
-        if (fast == null) {
-            return null;
-        }
-        while (head != slow) {
-            head = head.next;
-            slow = slow.next;
-        }
-        return head;
+        return null;
     }
 }

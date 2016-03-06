@@ -5,25 +5,20 @@ package btree;
  */
 public class Leet129 {
     public int sumNumbers(TreeNode root) {
-        if(root == null)
+        if (root == null) {
             return 0;
-
-        return dfs(root, 0, 0);
+        }
+        return dfs(root, 0);
     }
 
-    public int dfs(TreeNode node, int num, int sum){
-        if(node == null) return sum;
-
-        num = num*10 + node.val;
-
-        // leaf
-        if(node.left == null && node.right == null) {
-            sum += num;
-            return sum;
+    private int dfs(TreeNode root, int num) {
+        if (root == null) {
+            return 0;
         }
-
-        // left subtree + right subtree
-        sum = dfs(node.left, num, sum) + dfs(node.right, num, sum);
-        return sum;
+        num = num * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            return num;
+        }
+        return dfs(root.left, num) + dfs(root.right, num);
     }
 }

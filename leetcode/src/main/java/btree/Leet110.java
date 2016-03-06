@@ -5,28 +5,18 @@ package btree;
  */
 public class Leet110 {
     public boolean isBalanced(TreeNode root) {
-        return dfs(root, new int[1]);
+        return dfs(root) >= 0;
     }
 
-    private boolean dfs(TreeNode root, int[] height) {
+    private int dfs(TreeNode root) {
         if (root == null) {
-            height[0] = 0;
-            return true;
+            return 0;
         }
-        int[] leftHeight = new int[1];
-        if (!dfs(root.left, leftHeight)) {
-            return false;
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        if (left < 0 || right < 0 || Math.abs(left - right) > 1) {
+            return Integer.MIN_VALUE;
         }
-        int[] rightHeight = new int[1];
-        if (!dfs(root.right, rightHeight)) {
-            return false;
-        }
-
-        if (Math.abs(leftHeight[0] - rightHeight[0]) > 1) {
-            return false;
-        }
-
-        height[0] = Math.max(leftHeight[0], rightHeight[0]) + 1;
-        return true;
+        return Math.max(left, right) + 1;
     }
 }

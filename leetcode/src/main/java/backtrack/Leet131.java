@@ -10,7 +10,7 @@ public class Leet131 {
     public List<List<String>> partition(String s) {
         List<List<String>> result = new ArrayList<List<String>>();
 
-        if (s == null || s.length() == 0) {
+        if (s.length() == 0) {
             return result;
         }
 

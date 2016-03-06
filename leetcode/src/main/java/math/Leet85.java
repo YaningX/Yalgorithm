@@ -7,7 +7,7 @@ import java.util.Stack;
  */
 public class Leet85 {
     public int maximalRectangle(char[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
+        if (matrix.length == 0) {
             return 0;
         }
         int maxArea = 0;

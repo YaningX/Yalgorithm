@@ -3,17 +3,17 @@ package math;
 
 public class Leet48 {
     //(i, n - 1 -j) ====>> (n- 1 - j, n - 1 - i)
+    // (x, y) ===> (y, x) ===> (y, n - x - 1)
     public void rotate(int[][] matrix) {
         int n = matrix.length;
-        int layers = n / 2;
-
-        for (int layer = 0; layer < layers; layer++) {
-            for(int i = layer; i < n - 1 - layer; i++) {
-                int temp = matrix[i][layer];
-                matrix[i][layer] = matrix[n - 1 - layer][i];
-                matrix[n - 1 - layer][i] = matrix[n - 1 - i][n - 1 - layer];
-                matrix[n - 1 - i][n - 1 - layer] = matrix[layer][n - 1 - i];
-                matrix[layer][n - 1 - i] = temp;
+        int bound = n / 2;
+        for (int i = 0; i <= bound; i++) {
+            for (int j = i; j < n - 1 - i; j++) {
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[n - j - 1][i];
+                matrix[n - j - 1][i] = matrix[n - i - 1][n - j -1];
+                matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+                matrix[j][n - i - 1] = tmp;
             }
         }
     }

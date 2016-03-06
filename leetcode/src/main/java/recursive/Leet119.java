@@ -27,4 +27,20 @@ public class Leet119 {
         result.add(1);
         return result;
     }
+
+    ///////////////////////////////////////////////
+    public List<Integer> getRow0(int rowIndex) {
+        List<Integer> result = new ArrayList<Integer>();
+        result.add(1);
+        for (int i = 0; i < rowIndex; i++) {
+            int addition = result.get(0);
+            for (int j = 1; j < result.size(); j++) {
+                int old = result.get(j);
+                result.set(j, result.get(j) + addition);
+                addition = old;
+            }
+            result.add(1);
+        }
+        return result;
+    }
 }

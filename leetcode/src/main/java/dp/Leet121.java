@@ -23,11 +23,8 @@ public class Leet121 {
 
     public int maxProfit1(int[] prices) {
         int max = 0;
-        if (prices == null || prices.length <= 1) {
-            return max;
-        }
-        int low = prices[0];
-        for (int i = 1; i < prices.length; i++) {
+        int low = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
             low = Math.min(low, prices[i]);
             max = Math.max(max, prices[i] - low);
         }

@@ -25,7 +25,7 @@ public class Leet164 {
     }
 
     public int maximumGap(int[] nums) {
-        if (nums == null || nums.length < 2) {
+        if (nums.length < 2) {
             return 0;
         }
 

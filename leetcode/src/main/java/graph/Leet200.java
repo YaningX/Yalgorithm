@@ -5,7 +5,7 @@ package graph;
  */
 public class Leet200 {
     public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) {
+        if (grid.length == 0) {
             return 0;
         }
         int result = 0;

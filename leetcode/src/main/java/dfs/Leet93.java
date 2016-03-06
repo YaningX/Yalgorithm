@@ -9,45 +9,35 @@ import java.util.List;
 public class Leet93 {
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<String>();
-        List<String> candidate = new ArrayList<String>();
-        if (s.length() < 4 || s.length() > 16) {
-            return result;
-        }
-
-        dfs(result, candidate, s, 0);
+        dfs(s, new ArrayList<String>(), result);
         return result;
     }
 
-    private void dfs(List<String> result, List<String> candidate, String s, int start) {
-        if (candidate.size() == 4) {
-            if (start != s.length()) {
-                return;
-            } else {
-                StringBuilder sb = new StringBuilder();
-                sb.append(candidate.get(0));
-                for (int i = 1; i < candidate.size(); i++) {
-                    sb.append(".");
-                    sb.append(candidate.get(i));
-                }
-                result.add(sb.toString());
-                return;
+    private void dfs(String string, List<String> current, List<String> result) {
+        if (string.length() == 0 && current.size() == 4) {
+            String str= current.get(0);
+            for (int i = 1; i < 4; i++) {
+                str = str + "." + current.get(i);
             }
+            result.add(str);
+            return;
         }
-
-        for (int i = start; i < s.length() && i <= start + 3; i++) {
-            String tmp = s.substring(start, i + 1);
-            if (isValid(tmp)) {
-                candidate.add(tmp);
-                dfs(result, candidate, s, i + 1);
-                candidate.remove(candidate.size() - 1);
+        if (current.size() >= 4) {
+            return;
+        }
+        for (int i = 1; i <= 3 && i <= string.length(); i++) {
+            String substr = string.substring(0, i);
+            if (isValid(substr)) {
+                current.add(substr);
+                dfs(string.substring(i), current, result);
+                current.remove(current.size() - 1);
             }
-
         }
     }
 
     private boolean isValid(String str) {
-        if (str.charAt(0) == '0') { //剔除 00 01的情况.
-            return str.length() == 1;
+        if (str.length() != 1 && str.charAt(0) == '0') {//剔除 00 01的情况.
+            return false;
         }
         return Integer.valueOf(str) <= 255;
     }

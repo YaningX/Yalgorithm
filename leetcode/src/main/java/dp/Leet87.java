@@ -5,9 +5,6 @@ package dp;
  */
 public class Leet87 {
     public boolean isScramble(String s1, String s2) {
-        if (s1.length() != s2.length()) {
-            return false;
-        }
         int len = s1.length();
         if (len == 0) {
             return true;
@@ -26,7 +23,7 @@ public class Leet87 {
             for (int i = len - k + 1; i >= 1; i--) {
                 for (int j = len - k + 1; j >= 1; j--) {
                     for (int m = 1; m < k; m++) {
-                        if ((dp[m][i][j] && dp[k - m][i + m][j + m]) || (dp[m][i][j + k -m] && dp[k - m][i + m][j])) {
+                        if ((dp[m][i][j] && dp[k - m][i + m][j + m]) || (dp[m][i][j + k - m] && dp[k - m][i + m][j])) {
                             dp[k][i][j] = true;
                             break;
                         }

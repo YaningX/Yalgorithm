@@ -8,13 +8,10 @@ public class Leet104 {
         return dfs(root, 0);
     }
 
-    private int dfs(TreeNode node, int maxDepth) {
-        if (node == null) {
-            return maxDepth;
+    private int dfs(TreeNode root, int level) {
+        if (root == null) {
+            return level;
         }
-
-        int leftMax = dfs(node.left, maxDepth) + 1;
-        int rightMax = dfs(node.right, maxDepth) + 1;
-        return Math.max(maxDepth, Math.max(leftMax, rightMax));
+        return Math.max(dfs(root.left, level + 1), dfs(root.right, level + 1));
     }
 }

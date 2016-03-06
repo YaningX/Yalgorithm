@@ -22,7 +22,7 @@ public class Leet179 {
 
     public String largestNumber(int[] nums) {
         String result = "";
-        if (nums == null || nums.length == 0) {
+        if (nums.length == 0) {
             return result;
         }
         Integer[] array = new Integer[nums.length];

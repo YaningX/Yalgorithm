@@ -5,31 +5,19 @@ package linkedlist;
  */
 public class Leet82 {
     public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        ListNode dummyNode = new ListNode(0);
-        dummyNode.next = head;
-        ListNode iter = dummyNode;
-        while (iter.next != null && iter.next.next != null) {
-            if (iter.next.val == iter.next.next.val) {
-                ListNode fast = iter.next.next;
-                while (fast.next != null && fast.val == fast.next.val) {
-                    fast = fast.next;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode p = dummy;
+        while (p != null && p.next != null && p.next.next != null) {
+            if (p.next.val == p.next.next.val) {
+                int val = p.next.val;
+                while (p.next != null && p.next.val == val) {
+                    p.next = p.next.next;
                 }
-                iter.next = fast.next;
             } else {
-                iter = iter.next;
+                p = p.next;
             }
         }
-        return dummyNode.next;
-    }
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
+        return dummy.next;
     }
 }
