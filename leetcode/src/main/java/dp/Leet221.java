@@ -5,7 +5,7 @@ package dp;
  */
 public class Leet221 {
     public int maximalSquare(char[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
+        if (matrix.length == 0) {
             return 0;
         }
         int max = 0;
