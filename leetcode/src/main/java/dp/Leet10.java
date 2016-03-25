@@ -17,14 +17,14 @@ public class Leet10 {
                 if (dp[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.')) {
                     dp[i][j] = true;
                 } else if (p.charAt(j - 1) == '*') {
-                    if (dp[i - 1][j - 1]) {
+                    if (dp[i - 1][j - 1]) {//*匹配两个
                         int k = i;
                         while (k <= s.length() && (s.charAt(k - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')) {
                             dp[k][j] = true;
                             k++;
                         }
                     }
-                    if (dp[i][j - 1] || dp[i][j - 2]) {
+                    if (dp[i][j - 1] || dp[i][j - 2]) {//*匹配一个和零个
                         dp[i][j] = true;
                     }
                 }

@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by xuyaning on 31/1/16.
  */
-public class BTreeTest {
+public class BTreeTest extends ClassLoader{
     private TreeNode buildBTree() {
         TreeNode root = new TreeNode(0);
         root.left = new TreeNode(1);
@@ -116,5 +116,52 @@ public class BTreeTest {
         set.add(node1);
         TreeNode node2 = new TreeNode(1);
         System.out.println(node1.equals(node2));
+    }
+
+
+    @Test
+    public void testAnd() {
+        System.out.println(true & false);
+    }
+    @Test
+    public void testFinally() {
+        String a = "abc";
+        String b = "abc";
+        String c = new String("abc");
+        String d = "ab" + "c";
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(a == d);
+        System.out.println(c == d);
+    }
+
+    @Test
+    public void testStatic() throws ClassNotFoundException {
+        Thread.currentThread().getContextClassLoader().loadClass("Loader");
+        Class.forName("Loader");
+        System.out.println(Loader.class.getClassLoader());
+        System.out.println(ClassLoader.class.getClassLoader());
+    }
+
+    @Test
+    public void testTime() throws InterruptedException {
+        long t0 = System.currentTimeMillis();
+        Thread.sleep(1000);
+        System.out.println((System.currentTimeMillis() - t0) / 1000 + " seconds");
+        byte[] array = new byte[1314572800];
+        System.out.println(array.length);
+
+        for (int i = 0; i < 5; i++) {
+            int k = 5;//不加花括号会出错
+        }
+    }
+}
+
+class Loader {
+    static {
+        System.out.println("hello world");
+    }
+    public final void load() {
+        return;
     }
 }

@@ -58,4 +58,32 @@ public class SortTest {
             System.out.println(string);
         }
     }
+
+    @Test
+    public void testThread() throws InterruptedException {
+        Thread t1 = new SleepThread();
+        t1.start();
+       // t1.join();
+        Thread.sleep(1000);
+        Thread t2 = new SleepThread();
+        t2.start();
+        //t2.join();
+        Thread.sleep(10000);
+    }
+
+    static class SleepThread extends Thread {
+        private static int count = 0;
+        private synchronized void doSleep() throws InterruptedException {
+            System.out.println(Thread.currentThread().getName() + " start " + count);
+            Thread.sleep(5000);
+            System.out.println(Thread.currentThread().getName() + " end " + count);
+        }
+        public void run() {
+            try {
+                doSleep();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

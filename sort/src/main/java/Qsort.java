@@ -2,7 +2,7 @@
  * Not a stable sort, comparison.
  * Based on Divide-and-Conquer.
  *
- * Time Complexity T(n) = T(n/2) + n ==> O(nlogn),, Space Complexity O(1)
+ * Time Complexity T(n) = 2T(n/2) + n ==> O(nlogn),, Space Complexity O(1)
  * key idea: Select a pivot key in array[], usually key = array[0],
  * then the elements smaller than key are on key's left and the elements larger than key are on key's right.
  * It means key is on the right position of array[].
