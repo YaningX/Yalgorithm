@@ -2,6 +2,7 @@ import btree.InOrder;
 import btree.PostOrder;
 import btree.PreOrder;
 import btree.TreeNode;
+import com.sun.tools.javac.util.ArrayUtils;
 import org.junit.Test;
 import recursive.FibNum;
 
@@ -154,6 +155,14 @@ public class BTreeTest extends ClassLoader{
         for (int i = 0; i < 5; i++) {
             int k = 5;//不加花括号会出错
         }
+    }
+
+    @Test
+    public void testP2O() {
+        int[] array = new int[3];
+        Integer[] brray = org.apache.commons.lang.ArrayUtils.toObject(array);
+        List<Integer> list = Arrays.asList(brray);
+        System.out.println(list);
     }
 }
 
