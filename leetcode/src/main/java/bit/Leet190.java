@@ -1,7 +1,7 @@
 package bit;
 
 /**
- * Created by xuyaning on 1/2/16.
+ * Reverse Bits
  */
 public class Leet190 {
     public int reverseBits(int n) {

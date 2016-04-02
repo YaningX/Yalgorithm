@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by xuyaning on 1/2/16.
+ * Binary Tree Right Side View
  */
 public class Leet199 {
     public List<Integer> rightSideView(TreeNode root) {

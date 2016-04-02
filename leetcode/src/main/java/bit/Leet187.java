@@ -3,7 +3,7 @@ package bit;
 import java.util.*;
 
 /**
- * Created by xuyaning on 1/2/16.
+ * Repeated DNA Sequences
  */
 public class Leet187 {
     public List<String> findRepeatedDnaSequences(String s) {

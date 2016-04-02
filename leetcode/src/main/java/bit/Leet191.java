@@ -1,7 +1,7 @@
 package bit;
 
 /**
- * Created by xuyaning on 1/2/16.
+ * Number of 1 Bits
  */
 public class Leet191 {
     // you need to treat n as an unsigned value

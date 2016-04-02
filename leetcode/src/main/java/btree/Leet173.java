@@ -3,7 +3,8 @@ package btree;
 import java.util.Stack;
 
 /**
- * Created by xuyaning on 30/1/16.
+ * Binary Search Tree Iterator
+ * Pre-order traverse using stack
  */
 public class Leet173 {
     public class BSTIterator {

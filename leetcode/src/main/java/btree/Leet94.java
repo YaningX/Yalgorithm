@@ -1,33 +1,32 @@
 package btree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
- * Created by xuyaning on 9/1/16.
+ * Binary Tree Inorder Traversal
  */
 public class Leet94 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
-        dfs(result, root);
+        List<Integer> result = new LinkedList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null) {
+                node = node.right;
+                while (node != null) {
+                    stack.push(node);
+                    node = node.left;
+                }
+            }
+        }
         return result;
-    }
-
-    private void dfs(List<Integer> result, TreeNode node) {
-        if (node == null) {
-            return;
-        }
-        dfs(result, node.left);
-        result.add(node.val);
-        dfs(result, node.right);
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }
