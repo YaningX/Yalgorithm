@@ -1,7 +1,8 @@
 package btree;
 
 /**
- * Created by xuyaning on 11/1/16.
+ * Recover Binary Search Tree
+ * 中序遍历为有序遍历
  */
 public class Leet99 {
     public void recoverTree(TreeNode root) {

@@ -3,7 +3,7 @@ package string;
 import java.util.Stack;
 
 /**
- * Created by xuyaning on 2/1/16.
+ * Reverse Words in a String
  */
 public class Leet151 {
     public String reverseWords(String s) {
@@ -44,5 +44,17 @@ public class Leet151 {
         } else {
             return helper(s, index).append(cur).append(' ');
         }
+    }
+
+    public String reverseWords0(String s) {
+        String[] strs = s.trim().split("\\s+");
+        if (strs.length == 0) {
+            return "";
+        }
+        String result = strs[strs.length - 1];
+        for (int i = strs.length - 2; i >= 0; i--) {
+            result += (" " + strs[i]);
+        }
+        return result;
     }
 }
