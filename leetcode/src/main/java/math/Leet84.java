@@ -3,7 +3,7 @@ package math;
 import java.util.Stack;
 
 /**
- * Created by xuyaning on 8/1/16.
+ * Largest Rectangle in Histogram
  */
 public class Leet84 {
     public int largestRectangleArea(int[] height) {

@@ -164,6 +164,23 @@ public class BTreeTest extends ClassLoader{
         List<Integer> list = Arrays.asList(brray);
         System.out.println(list);
     }
+
+    @Test
+    public void testList() {
+        List<Integer> list1 = new ArrayList<Integer>();
+        List<Integer> list2 = new ArrayList<Integer>();
+        list1.add(1);
+        list2.add(1);
+        System.out.println(list1.equals(list2));
+    }
+
+    @Test
+    public void testIn() {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            System.out.println(in.nextLine());
+        }
+    }
 }
 
 class Loader {

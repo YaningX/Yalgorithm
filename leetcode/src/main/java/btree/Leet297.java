@@ -1,9 +1,6 @@
 package btree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * Created by xuyaning on 12/2/16.
@@ -20,40 +17,43 @@ public class Leet297 {
      */
     public class Codec {
 
+
         // Encodes a tree to a single string.
         public String serialize(TreeNode root) {
-            ArrayList<Integer> ans = new ArrayList<Integer>();
-            sHelper(root, ans);
-            return ans.toString();
+            List<Integer> result = new LinkedList<Integer>();
+            sDfs(root, result);
+            return result.toString();
         }
-        private void sHelper(TreeNode root, ArrayList<Integer> ans) {
-            if(root == null) {
-                ans.add(null);
+
+        private void sDfs(TreeNode root, List<Integer> result) {
+            if (root == null) {
+                result.add(null);
                 return;
             }
-            ans.add(root.val);
-            sHelper(root.left, ans);
-            sHelper(root.right, ans);
+            result.add(root.val);
+            sDfs(root.left, result);
+            sDfs(root.right, result);
         }
 
         // Decodes your encoded data to tree.
         public TreeNode deserialize(String data) {
-            if(data == null) return null;
-            data = data.substring(1, data.length() - 1);
-            String[] nodesVal = data.split(", ");
-            Deque<String> strList = new LinkedList<String>(Arrays.asList(nodesVal));
-            return dHelper(strList);
+            String[] strArray = data.substring(1, data.length() - 1).split(", ");
+            Queue<String> queue = new LinkedList<String>(Arrays.asList(strArray));
+            return dDfs(queue);
         }
-        private TreeNode dHelper(Deque<String> strList) {
-            if(strList.size() == 0) return null;
-            String str = strList.pop();
-            if(str.equals("null")) {
+
+        private TreeNode dDfs(Queue<String> queue) {
+            if (queue.size() == 0) {
                 return null;
             }
-            TreeNode cur = new TreeNode(Integer.parseInt(str));
-            cur.left = dHelper(strList);
-            cur.right = dHelper(strList);
-            return cur;
+            if (queue.peek().equals("null")) {
+                queue.poll();
+                return null;
+            }
+            TreeNode node = new TreeNode(Integer.valueOf(queue.poll()));
+            node.left = dDfs(queue);
+            node.right = dDfs(queue);
+            return node;
         }
     }
 
