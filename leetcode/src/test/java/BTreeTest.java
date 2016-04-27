@@ -181,6 +181,30 @@ public class BTreeTest extends ClassLoader{
             System.out.println(in.nextLine());
         }
     }
+
+
+    public static int getValue(String key, String code) {
+        String result = "0";
+        for (int i = 0; i < code.length(); i++) {
+            char ch = code.charAt(i);
+            int index = key.indexOf(ch);
+            if (index > 0) {
+                result += ((index + 1) % 10);
+            }
+        }
+        return Integer.valueOf(result);
+    }
+
+    @Test
+    public void testSubstitude() {
+        System.out.println(BTreeTest.getValue("TRADINGFEW", "LGXWEV"));
+        System.out.println(BTreeTest.getValue("ABCDEFGHIJ", "XJ"));
+    }
+
+
+
+
+
 }
 
 class Loader {

@@ -11,6 +11,10 @@
 
   <groupId>algorithm</groupId>
   <artifactId>backtracking</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../poj</module>
+    </modules>
 
 
 </project>
