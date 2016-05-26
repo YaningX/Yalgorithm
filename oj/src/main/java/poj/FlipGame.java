@@ -1,112 +1,84 @@
 package poj;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.util.StringTokenizer;
 
+/**
+ *  1) BSF
+ *  2) 用位运算减少计算量和存储空间
+ */
 public class FlipGame {
-    static BufferedReader in;
-    static PrintWriter out;
-    static StringTokenizer tok;
 
-    static void solve() throws Exception {
-        float[] a = {7.5398f, 6.5398f, 1, 1};
-        int[] b = Puzzle(a);
-        out.println(b);
+    static class Status {
+        int source;
+        int pos;
+        public Status(int source, int pos) {
+            this.source = source;
+            this.pos = pos;
+        }
     }
 
-    public static int[] Puzzle(float[] a) {
-        int n = a.length;
-        int[] index = new int[n];
-        for (int i = 0; i < n; i++) {
-            index[i] = i;
-        }
-        quickSort(a, 0, n, index);
-        int[] ans = new int[n];
-        for (int i = 1; i < n; i++) {
-            if (a[i] == a[i - 1]) {
-                ans[index[i]] = ans[index[i - 1]];
-            } else {
-                ans[index[i]] = i;
+    public static void solve() {
+        Scanner in = new Scanner(System.in);
+        int source = 0;
+        for (int i = 0; i < 4; i++) {
+            if (in.hasNextLine()) {
+                String str = in.nextLine().trim();
+                for (int j = 0; j < 4; j++) {
+                    source = (source << 1) + (str.charAt(j) == 'b'? 1: 0);
+                }
             }
         }
-        return ans;
-    }
+        Queue<Status> queue = new LinkedList<Status>();
+        queue.offer(new Status(source, -1));
+        int level = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Status status = queue.poll();
+                if (FlipGame.isSingleColor(status.source)) {
+                    System.out.println(level);
+                    return;
+                }
+                for (int j = status.pos + 1; j < 16; j++) {
+                    status.pos = j;
+                    Status newStatus = flip(status);
+                    queue.offer(newStatus);
+                }
 
-    private static void quickSort(float[] c, int i, int j, int[] index) {
-        if (i + 1 >= j) {
-            return;
-        }
-        int k = partition(c, i, j, index);
-        quickSort(c, i, k, index);
-        quickSort(c, k + 1, j, index);
-    }
-
-    private static int partition(float[] c, int i, int j, int[] index) {
-        int i1 = i;
-        for (int i2 = i + 1; i2 < j; i2++) {
-            if (c[i2] < c[i]) {
-                i1++;
-                swap(c, i1, i2, index);
             }
+            level++;
         }
-        swap(c, i, i1, index);
-        return i1;
+        System.out.println("Impossible");
     }
 
-    private static void swap(float[] c, int i, int j, int[] index) {
-        float t = c[i];
-        c[i] = c[j];
-        c[j] = t;
-        int idx = index[i];
-        index[i] = index[j];
-        index[j] = idx;
-    }
-
-    public static void main(String args[]) {
-        try {
-            in = new BufferedReader(new InputStreamReader(System.in));
-            out = new PrintWriter(new OutputStreamWriter(System.out));
-            solve();
-            in.close();
-            out.close();
-        } catch (Throwable e) {
-            e.printStackTrace();
-            System.exit(1);
+    public static Status flip(Status status) {
+        int source = status.source;
+        int pos = status.pos;
+        source ^= (1 << pos);
+        if (pos / 4 > 0) {
+            source ^= (1 << (pos - 4));
         }
-    }
-
-    static int nextInt() throws IOException {
-        return Integer.parseInt(next());
-    }
-
-    static int[] nextIntArray(int len, int start) throws IOException {
-        int[] a = new int[len];
-        for (int i = start; i < len; i++)
-            a[i] = nextInt();
-        return a;
-    }
-
-    static long nextLong() throws IOException {
-        return Long.parseLong(next());
-    }
-
-    static long[] nextLongArray(int len, int start) throws IOException {
-        long[] a = new long[len];
-        for (int i = start; i < len; i++)
-            a[i] = nextLong();
-        return a;
-    }
-
-    static String next() throws IOException {
-        while (tok == null || !tok.hasMoreTokens()) {
-            tok = new StringTokenizer(in.readLine());
+        if (pos /4 < 3) {
+            source ^= (1 << (pos + 4));
         }
-        return tok.nextToken();
+        if (pos % 4 > 0) {
+            source ^= (1 << (pos - 1));
+        }
+        if (pos % 4 < 3) {
+            source ^= (1 << (pos + 1));
+        }
+        return new Status(source, pos);
+    }
+
+    public static boolean isSingleColor(int source) {
+        return source == 0xffff || source == 0;
+    }
+
+    public static void main(String[] args) {
+        FlipGame.solve();
     }
 
 }

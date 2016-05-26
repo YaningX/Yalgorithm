@@ -27,7 +27,7 @@ public class DisjointSet {
         return x;
     }*/
 
-    
+
     //路径压缩优化
     public int find(int x) {
         int r = x;
