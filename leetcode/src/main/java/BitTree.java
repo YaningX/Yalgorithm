@@ -84,7 +84,6 @@ public class BitTree {
         int[] nums = new int[] {1, 2, 3, -1, 4, 5, 6};
         int[] bitTree = BitTree.toBitTree(nums);
         System.out.println(Arrays.toString(bitTree));
-        System.out.println(BinaryIndexedTreeUtils.getSum(bitTree, 4));
 
         BitTree binaryIndexTree = new BitTree(nums);
         System.out.println(binaryIndexTree.tree);

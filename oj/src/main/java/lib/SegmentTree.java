@@ -1,4 +1,8 @@
+package lib;
 
+/**
+ * 区间树可以快速求某区间内的最大值/最小值/和/积
+ */
 public class SegmentTree {
 
     private STNode root;
