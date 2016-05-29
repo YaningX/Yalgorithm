@@ -22,7 +22,7 @@ public class RadarInstallation {
         Scanner in = new Scanner(System.in);
         int testcase = 0;
         List<Interval> intervals = new ArrayList<Interval>();
-        while (true) {
+        while (in.hasNextInt()) {
             ++testcase;
             intervals.clear();
             int num = in.nextInt();
@@ -48,6 +48,7 @@ public class RadarInstallation {
             }
         }
     }
+
     private static int solve(List<Interval> lists) {
         int rst = 1;
         double cur = lists.get(0).right;

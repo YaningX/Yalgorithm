@@ -2,17 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Main0 {
     public static int minMaze(char[][] maze) {
-        List<Integer> emptyList = Main.getEmpty(maze);
-        List<List<Integer>> combineList = Main.getCombination(emptyList);
+        List<Integer> emptyList = Main0.getEmpty(maze);
+        List<List<Integer>> combineList = Main0.getCombination(emptyList);
         for (List<Integer> list: combineList) {
             for (int i: list) {
                 int x = i / maze.length;
                 int y = i % maze.length;
                 maze[x][y] = '.';
             }
-            if (Main.isOK(maze, 0, 0)) {
+            if (Main0.isOK(maze, 0, 0)) {
                 return list.size();
             }
             for (int i: list) {
@@ -58,13 +58,13 @@ public class Main {
             return false;
         }
         if (y < maze.length - 1 && maze[x][y + 1] == '.') {
-            if ( Main.isOK(maze, x, y + 1)) {
+            if ( Main0.isOK(maze, x, y + 1)) {
                 return true;
             } else {
                 return false;
             }
         }  else {
-            if (Main.isOK(maze, x + 1, y)) {
+            if (Main0.isOK(maze, x + 1, y)) {
                 return true;
             }
         }
@@ -82,6 +82,6 @@ public class Main {
                 maze[i][j] = line.charAt(j);
             }
         }
-        System.out.println(Main.minMaze(maze));
+        System.out.println(Main0.minMaze(maze));
     }
 }
