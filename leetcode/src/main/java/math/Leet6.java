@@ -1,9 +1,18 @@
 package math;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by xuyaning on 14/2/16.
  */
 public class Leet6 {
+    /**
+     * time O(n) space O(n)
+     * @param s
+     * @param numRows
+     * @return
+     */
     public String convert(String s, int numRows) {
         if (numRows == 1) {
             return s;
@@ -27,5 +36,46 @@ public class Leet6 {
             result += s.charAt(i);
         }
         return result;
+    }
+
+    /**
+     * time: O(n), space: O(n)
+     * @param s
+     * @param numRows
+     * @return
+     */
+    public String convert0(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        List<StringBuilder> list = new ArrayList<StringBuilder>();
+        for (int i = 0; i < numRows; i++) {
+            list.add(new StringBuilder());
+        }
+        int row = 0;
+        boolean down = true;
+        for (int i = 0; i < s.length(); i++) {
+            list.get(row).append(s.charAt(i));
+            if (down) {
+                if (row == numRows - 1) {
+                    down = false;
+                    row--;
+                } else {
+                    row++;
+                }
+            } else {
+                if (row == 0) {
+                    down = true;
+                    row++;
+                } else {
+                    row--;
+                }
+            }
+        }
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder sb: list) {
+            res.append(sb);
+        }
+        return res.toString();
     }
 }
