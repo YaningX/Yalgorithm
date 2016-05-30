@@ -1,12 +1,12 @@
-package math;
+package round2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xuyaning on 14/2/16.
+ * Created by xuyaning on 30/5/16.
  */
-public class Leet6 {
+public class ZigZagConversion {
     /**
      * time O(n) space O(n)
      * @param s
@@ -78,5 +78,4 @@ public class Leet6 {
         }
         return res.toString();
     }
-
 }
