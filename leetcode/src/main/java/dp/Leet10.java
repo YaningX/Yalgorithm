@@ -1,8 +1,6 @@
 package dp;
 
-/**
- * Created by xuyaning on 17/2/16.
- */
+
 public class Leet10 {
     public boolean isMatch(String s, String p) {
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
