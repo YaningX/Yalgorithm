@@ -13,7 +13,7 @@ public class Leet32 {
         dp[s.length() - 1] = 0;
         for (int i = s.length() - 2; i >= 0; i--) {
             if (s.charAt(i) == '(') {
-                int j = i + 1 + dp[i +  1];
+                int j = i + 1 + dp[i + 1];
                 if (j < s.length() && s.charAt(j) == ')') {
                     dp[i] = dp[i + 1] + 2;
                     if (j + 1 < s.length()) {
