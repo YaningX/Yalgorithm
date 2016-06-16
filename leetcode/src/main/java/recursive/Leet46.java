@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by xuyaning on 29/12/15.
+ *
  */
 public class Leet46 {
     public List<List<Integer>> permute(int[] nums) {
@@ -48,9 +48,7 @@ public class Leet46 {
     // another effective solution
     public List<List<Integer>> permute0(int[] nums) {
         List<List<Integer>> result = new LinkedList<List<Integer>>();
-        if (nums.length == 0) {
-            return result;
-        }
+
         List<Integer> rootList = new ArrayList<Integer>();
         for (int num: nums) {
             rootList.add(num);
