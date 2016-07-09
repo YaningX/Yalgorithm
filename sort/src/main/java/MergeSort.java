@@ -5,7 +5,6 @@
  */
 public class MergeSort implements Sort {
     //bottom up
-    @Override
     public int[] sort(int[] numbers) {
         for (int halfSize = 1; halfSize < numbers.length; halfSize *= 2) {
             int i = 0;

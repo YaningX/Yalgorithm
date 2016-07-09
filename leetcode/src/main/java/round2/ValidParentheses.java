@@ -1,8 +1,10 @@
 package round2;
 
-
 import java.util.Stack;
 
+/**
+ * https://leetcode.com/problems/valid-parentheses/
+ */
 public class ValidParentheses {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
@@ -14,14 +16,8 @@ public class ValidParentheses {
                 if (stack.isEmpty()) {
                     return false;
                 }
-                char chr = stack.pop();
-                if (ch == ')' && chr != '(') {
-                    return false;
-                }
-                if (ch == ']' && chr != '[') {
-                    return false;
-                }
-                if (ch == '}' && chr != '{') {
+                char c = stack.pop();
+                if ((ch == ')' && c != '(') || (ch == ']' && c != '[') || (ch == '}' && c != '{')) {
                     return false;
                 }
             }
