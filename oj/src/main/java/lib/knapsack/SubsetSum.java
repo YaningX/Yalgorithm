@@ -20,7 +20,7 @@ public class SubsetSum {
         for (int i = 1; i < nums.length; i++) {
             for (int j = target; j >= 1; j--) {
                 if (j < nums[i - 1] || !dp[j - nums[i - 1]]) {
-                    dp[j] = false;
+                    continue;
                 } else {
                     dp[j] = true;
                 }
@@ -65,7 +65,14 @@ public class SubsetSum {
     }
 
     public static void main(String[] args) {
-        System.out.println(SubsetSum.subsetSum0(new int[] {1, 2, 3, 4, 5}, 7));
-        System.out.println(SubsetSum.subSetSum1(new int[] {1, 2, 3, 4, 5}, 7));
+        System.out.println(SubsetSum.subsetSum0(new int[] {1, 2, 3, 4, 5}, 2));
+        System.out.println(SubsetSum.subSetSum1(new int[] {1, 2, 3, 4, 5}, 1));
+    }
+
+    private int val = 0;
+    class Test {
+        public void test() {
+            val = 3;
+        }
     }
 }

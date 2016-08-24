@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MSstable {
+public class Main {
     static Scanner sc;
     static int memeberNum;
     static ArrayList<Integer>[] fatherList;
@@ -9,6 +9,7 @@ public class MSstable {
     static boolean[] checked;
 
     public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
         int result = 0;
         sc = new Scanner(System.in);
         memeberNum = sc.nextInt();

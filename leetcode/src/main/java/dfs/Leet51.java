@@ -92,11 +92,11 @@ public class Leet51 {
         int topRight = col;
         for (int i = queens.size() - 1; i >= 0; i--) {
             int queen = queens.get(i);
+            topLeft--;
+            topRight++;
             if (queen == col || queen == topLeft || queen == topRight) {
                 return false;
             }
-            topLeft--;
-            topRight++;
         }
         return true;
     }

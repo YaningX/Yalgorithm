@@ -1,8 +1,6 @@
 package recursive;
 
-/**
- * Created by xuyaning on 7/1/16.
- */
+
 public class Leet79 {
     public boolean exist(char[][] board, String word) {
         if (board == null || board[0].length == 0) {

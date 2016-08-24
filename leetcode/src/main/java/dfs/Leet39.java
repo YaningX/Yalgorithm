@@ -9,17 +9,16 @@ import java.util.List;
  * Created by xuyaning on 19/2/16.
  */
 public class Leet39 {
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new LinkedList<List<Integer>>();
         if (candidates.length == 0) {
             return result;
         }
-        Arrays.sort(candidates);
         dfs(candidates, 0, target, new ArrayList<Integer>(), result);
         return result;
     }
 
-    private void dfs(int[] candidates, int index, int target, List<Integer> current, List<List<Integer>> result) {
+    private static void dfs(int[] candidates, int index, int target, List<Integer> current, List<List<Integer>> result) {
         if (target < 0) {
             return;
         }
@@ -33,4 +32,24 @@ public class Leet39 {
             current.remove(current.size() - 1);
         }
     }
+
+
+    public static int combinationSum1(int[] candidates, int target) {
+        int[][] dp = new int[candidates.length + 1][target + 1];
+        for (int i = 0; i <= candidates.length; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 1; i <= candidates.length; i++) {
+            for (int j = 1; j <= target; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (j >= candidates[i - 1]) {
+                    dp[i][j] = dp[i][j] + dp[i][j - candidates[i - 1]];
+                }
+            }
+        }
+        return dp[candidates.length][target];
+    }
+
 }
+
+

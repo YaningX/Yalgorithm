@@ -1,7 +1,13 @@
 package utils;
 
-/**
- * Created by xuyaning on 15/7/16.
- */
+import java.util.Scanner;
+
 public class HihoCodeTemplate1 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+
+        }
+        in.close();
+    }
 }

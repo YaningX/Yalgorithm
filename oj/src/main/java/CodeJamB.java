@@ -23,20 +23,42 @@ public class CodeJamB {
     }
 
 
+
     public static int dfs(int[][] nums, int xStart, int xEnd, int yStart, int yEnd) {
         if (xEnd - xStart <= 1 || yEnd - yStart <= 1) {
             return 0;
         }
         int min = Integer.MAX_VALUE;
+
+
         for (int i = xStart + 1; i < xEnd; i++) {
-            min = Math.min(min, nums[i][yStart]);
-            min = Math.min(min, nums[i][yEnd]);
+            int max = 0;
+            for (int j = 0; j <= yStart; j++) {
+                max = Math.max(max, nums[i][j]);
+            }
+            min = Math.min(min, max);
+
+            max = 0;
+            for (int j = yEnd; j < nums[0].length; j++) {
+                max = Math.max(max, nums[i][j]);
+            }
+            min = Math.min(min, max);
         }
 
         for (int i = yStart + 1; i < yEnd; i++) {
-            min = Math.min(min, nums[xStart][i]);
-            min = Math.min(min, nums[xEnd][i]);
+            int max = 0;
+            for (int j = 0; j <= xStart; j++) {
+                max = Math.max(max, nums[j][i]);
+            }
+            min = Math.min(min, max);
+
+            max = 0;
+            for (int j = xEnd; j < nums.length; j++) {
+                max = Math.max(max, nums[j][i]);
+            }
+            min = Math.min(min, max);
         }
+
 
 
         int sum0 = 0;

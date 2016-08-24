@@ -3,9 +3,6 @@ package btree;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by xuyaning on 9/1/16.
- */
 public class Leet95 {
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode> result = new ArrayList<TreeNode>();
@@ -44,5 +41,10 @@ public class Leet95 {
         TreeNode(int x) {
             val = x;
         }
+    }
+
+    public static void main(String[] args) {
+        List<TreeNode> result = new Leet95().generateTrees(3);
+        System.out.println(result);
     }
 }

@@ -1,8 +1,5 @@
 package bit;
 
-/**
- * Created by xuyaning on 18/2/16.
- */
 public class Leet29 {
     public int divide(int dividend, int divisor) {
         if (divisor == 0) {

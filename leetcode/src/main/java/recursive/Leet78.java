@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by xuyaning on 7/1/16.
- */
 public class Leet78 {
     public List<List<Integer>> subsets(int[] S) {
         Arrays.sort(S);

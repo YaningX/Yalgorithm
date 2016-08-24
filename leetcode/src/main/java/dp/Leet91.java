@@ -1,8 +1,5 @@
 package dp;
 
-/**
- * Created by xuyaning on 9/1/16.
- */
 public class Leet91 {
 
     public int numDecodings(String s) {
