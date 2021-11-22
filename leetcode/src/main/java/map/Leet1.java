@@ -18,6 +18,7 @@ public class Leet1 {
                 map.put(nums[i], i);
             }
         }
+        
         return result;
     }
 }
